@@ -7,15 +7,9 @@ interface CustomIconButtonProps extends IconButtonProps {}
 
 const CustomIconButtonRoot = styled(IconButton)<IconButtonProps>(
   ({ theme }) => ({
-    div: {
-      '&: active': {
-        opacity: 0.5,
-        transition: '0.3s ease-in-out',
-      },
-      '&: hover': {
-        opacity: 0.5,
-        transition: '0.3s ease-in-out',
-      },
+    '&: active': {
+      opacity: 0.5,
+      transition: '0.3s ease-in-out',
     },
   })
 );
@@ -27,7 +21,7 @@ const CustomIconButton: React.FunctionComponent<CustomIconButtonProps> = (
 
   return (
     <CustomIconButtonRoot disableRipple {...otherProps}>
-      <div>{children}</div>
+      {children}
     </CustomIconButtonRoot>
   );
 };
