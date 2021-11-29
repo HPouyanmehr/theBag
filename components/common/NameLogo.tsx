@@ -25,6 +25,7 @@ const NameLogo: React.FunctionComponent<NameLogoProps> = (props) => {
         flexDirection: 'row',
         justifyContent: 'center',
         position: 'relative',
+        width: 'fit-content',
       }}
     >
       <div
