@@ -4,18 +4,20 @@ import * as React from 'react';
 import { Property } from 'csstype';
 // type
 interface NameLogoProps {
-  name?: string;
-  bgColor?: Property.BackgroundColor;
   bgBorder?: Property.BorderRadius;
+  bgColor?: Property.BackgroundColor;
+  color?: Property.Color;
   fontSize?: Property.FontSize;
+  name?: string;
 }
 
 const NameLogo: React.FunctionComponent<NameLogoProps> = (props) => {
   const {
-    name = 'Name',
     bgBorder = 4,
     bgColor = 'wheat',
+    color = 'inherit',
     fontSize = 'inherit',
+    name = 'Name',
   } = props;
   return (
     <div
@@ -37,21 +39,20 @@ const NameLogo: React.FunctionComponent<NameLogoProps> = (props) => {
           height: 30,
           width: 30,
         }}
+      />
+      <p
+        style={{
+          color,
+          fontSize,
+          fontWeight: 'bold',
+          left: 10,
+          position: 'absolute',
+          textTransform: 'capitalize',
+          whiteSpace: 'nowrap',
+        }}
       >
-        <p
-          style={{
-            color: 'inherit',
-            fontSize,
-            fontWeight: 'bold',
-            left: 10,
-            position: 'absolute',
-            textTransform: 'capitalize',
-            whiteSpace: 'nowrap',
-          }}
-        >
-          {name}
-        </p>
-      </div>
+        {name}
+      </p>
     </div>
   );
 };
