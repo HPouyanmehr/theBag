@@ -7,17 +7,14 @@ import {
   Box,
   BoxProps,
   Container,
-  IconButton,
-  IconButtonProps,
   styled,
   Toolbar,
 } from '@mui/material';
-// @mui/icons-material
-import MenuIcon from '@mui/icons-material/Menu';
+
 // custom component
 import NameLogo from 'components/common/NameLogo';
 import ButtonLink from 'components/common/ButtonLink';
-import lightTheme from 'styles/theme/lightTheme';
+import MenuToggler from 'components/common/MenuToggler';
 // type
 interface CustomAppBarProps {}
 
@@ -51,17 +48,7 @@ const CustomAppBar: React.FunctionComponent<CustomAppBarProps> = (props) => {
                 <ButtonLink>Certificates</ButtonLink>
                 <ButtonLink>Gallery</ButtonLink>
               </LinksBox>
-              <IconButton
-                aria-label="Menu toggler"
-                color="inherit"
-                sx={{
-                  display: {
-                    sm: 'none',
-                  },
-                }}
-              >
-                <MenuIcon color="inherit" />
-              </IconButton>
+              <MenuToggler sx={{ display: { sm: 'none' } }} />
             </LinkContainer>
           </Toolbar>
         </Container>
