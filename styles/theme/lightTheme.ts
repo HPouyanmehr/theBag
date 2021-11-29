@@ -1,5 +1,7 @@
 // @mui
 import { createTheme } from '@mui/material/styles';
+// common theme options
+import commonThemeOptions from 'styles/theme/commonThemeOptions';
 
 const lightTheme = createTheme({
   palette: {
@@ -19,6 +21,7 @@ const lightTheme = createTheme({
       secondary: '#505050',
     },
   },
+  ...commonThemeOptions,
 });
 
 export default lightTheme;
