@@ -1,12 +1,13 @@
 // custom component
 import CenterBox from 'components/common/CenterBox';
+import NameLogo from 'components/common/NameLogo';
 // type
 import type { NextPage } from 'next';
 
 const Home: NextPage = () => {
   return (
     <CenterBox backgroundColor="tomato">
-      <p>hi</p>
+      <NameLogo name="hosein pouyanmehr" />
     </CenterBox>
   );
 };
