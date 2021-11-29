@@ -1,14 +1,15 @@
 // custom component
 import ButtonLink from 'components/common/ButtonLink';
 import CenterBox from 'components/common/CenterBox';
+import CustomAppBar from 'components/common/CustomAppBar';
 // type
 import type { NextPage } from 'next';
 
 const Home: NextPage = () => {
   return (
-    <CenterBox backgroundColor="tomato">
-      <ButtonLink href="/">Gallery</ButtonLink>
-    </CenterBox>
+    <CustomAppBar />
+    // <CenterBox backgroundColor="tomato">
+    // </CenterBox>
   );
 };
 
