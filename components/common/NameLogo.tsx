@@ -1,13 +1,23 @@
 // react
 import * as React from 'react';
+// csstype
+import { Property } from 'csstype';
+import { bgcolor } from '@mui/system';
 // type
 interface NameLogoProps {
   name?: string;
-  bgColor?: string;
+  bgColor?: Property.BackgroundColor;
+  bgBorder?: Property.BorderRadius;
+  fontSize?: Property.FontSize;
 }
 
 const NameLogo: React.FunctionComponent<NameLogoProps> = (props) => {
-  const { name = 'Name' } = props;
+  const {
+    name = 'Name',
+    bgBorder = 4,
+    bgColor = 'wheat',
+    fontSize = 'inherit',
+  } = props;
   return (
     <div
       style={{
@@ -21,8 +31,8 @@ const NameLogo: React.FunctionComponent<NameLogoProps> = (props) => {
       <div
         style={{
           alignItems: 'center',
-          backgroundColor: 'wheat',
-          borderRadius: 4,
+          backgroundColor: bgColor,
+          borderRadius: bgBorder,
           display: 'flex',
           height: 30,
           width: 30,
@@ -31,7 +41,7 @@ const NameLogo: React.FunctionComponent<NameLogoProps> = (props) => {
         <p
           style={{
             color: 'inherit',
-            fontSize: 18,
+            fontSize,
             fontWeight: 'bold',
             left: 10,
             position: 'absolute',
