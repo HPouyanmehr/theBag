@@ -2,10 +2,9 @@
 import * as React from 'react';
 // @mui
 import { Typography } from '@mui/material';
-// react-typing-effect
-import ReactTypingEffect from 'react-typing-effect';
 // custom components
 import CenterBox from 'components/common/CenterBox';
+import TypingEffect from 'components/common/TypingEffect';
 // type
 interface HomeHeroProps {}
 
@@ -18,14 +17,7 @@ const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
       <Typography component="h1" variant="h2" fontWeight="bold">
         John Doe
       </Typography>
-      <ReactTypingEffect
-        text={['photographer', 'desiner']}
-        staticText="I'm"
-        typingDelay={150}
-        speed={200}
-        eraseSpeed={100}
-        eraseDelay={2000}
-      />
+      <TypingEffect staticText="I am" text={['photographer', 'desiner']} />
     </CenterBox>
   );
 };
