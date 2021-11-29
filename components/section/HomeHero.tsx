@@ -18,7 +18,7 @@ const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
       <Typography component="h1" variant="h2" color="primary" fontWeight="bold">
         John Doe
       </Typography>
-      <TypingEffect staticText="I am" text={['photographer', 'desiner']} />
+      <TypingEffect staticText="I am" text={['photographer', 'designer']} />
       <ScrollDown
         sx={{
           bottom: '10%',
