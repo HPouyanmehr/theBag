@@ -2,7 +2,6 @@
 import * as React from 'react';
 // csstype
 import { Property } from 'csstype';
-import { bgcolor } from '@mui/system';
 // type
 interface NameLogoProps {
   name?: string;
