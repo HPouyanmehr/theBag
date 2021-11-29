@@ -3,7 +3,7 @@ import * as React from 'react';
 // @mui
 import { Button, ButtonProps, styled } from '@mui/material';
 // type
-interface CustomButtonProps {}
+interface CustomButtonProps extends ButtonProps {}
 
 const CustomButtonRoot = styled(Button)<ButtonProps>(({ theme }) => ({
   textTransform: 'capitalize',
