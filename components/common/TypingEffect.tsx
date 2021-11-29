@@ -4,6 +4,8 @@ import * as React from 'react';
 import ReactTypingEffect, { ReactTypingEffectProps } from 'react-typing-effect';
 // type
 interface TypingEffectProps extends ReactTypingEffectProps {}
+// style
+import styles from 'styles/components/TypingEffect.module.css';
 
 const TypingEffect: React.FunctionComponent<TypingEffectProps> = (props) => {
   const {
@@ -16,6 +18,7 @@ const TypingEffect: React.FunctionComponent<TypingEffectProps> = (props) => {
 
   return (
     <ReactTypingEffect
+      className={styles.text}
       eraseDelay={eraseDelay}
       eraseSpeed={eraseSpeed}
       speed={speed}
