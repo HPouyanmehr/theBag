@@ -19,7 +19,7 @@ const About: React.FunctionComponent<AboutProps> = (props) => {
       }}
       id="about"
     >
-      <Grid container spacing={2}>
+      <Grid container spacing={2} sx={{ marginTop: 0 }}>
         <Grid item xs={12} md={6}>
           <p>photo</p>
         </Grid>
