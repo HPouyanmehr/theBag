@@ -15,7 +15,11 @@ const Skills: React.FunctionComponent<SkillsProps> = (props) => {
   const { containerMaxWidth } = React.useContext(ComponentsContext);
   return (
     <>
-      <Container maxWidth={containerMaxWidth} sx={{ margin: '5rem 0' }}>
+      <Container
+        id="skills"
+        maxWidth={containerMaxWidth}
+        sx={{ marginTop: '5rem', marginBottom: '5rem' }}
+      >
         <Typography
           component="h2"
           variant="h4"
