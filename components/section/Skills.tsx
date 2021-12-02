@@ -2,10 +2,10 @@
 import * as React from 'react';
 // @mui
 import { Box, Container, Icon, Typography } from '@mui/material';
-// @mui icon
-import HomeIcon from '@mui/icons-material/Home';
 // custom component
 import SkillProgress from 'components/common/SkillProgress';
+// custom icons
+import HTML5 from 'components/icon/HTML5';
 // context
 import ComponentsContext from 'context/componentsContext';
 // type
@@ -41,10 +41,10 @@ const Skills: React.FunctionComponent<SkillsProps> = (props) => {
             value={77}
             Icon={
               <Icon color="primary" fontSize="large">
-                <HomeIcon color="inherit" fontSize="inherit" />
+                <HTML5 color="inherit" fontSize="inherit" />
               </Icon>
             }
-            subtitle="HTML"
+            subtitle="HTML5 | 98%"
           />
         </Box>
       </Container>

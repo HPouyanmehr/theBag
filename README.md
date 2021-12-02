@@ -8,6 +8,10 @@ theBag is a multipurpose template made by [Nextjs](https://nextjs.org/) and [MUI
 
 1- Profile photo: by [Kyle Kempt](https://unsplash.com/@kjkempt17?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/john-doe?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 
+### icons
+
+1- HTML5 icon path by [Iconpacks](https://iconpacks.net/?utm_source=link-attribution&utm_content=6648)
+
 ---
 
 Made with ❤️ at [mopeim](https://mopeim.com)
