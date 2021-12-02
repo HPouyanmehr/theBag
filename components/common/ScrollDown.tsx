@@ -3,7 +3,7 @@ import * as React from 'react';
 // @mui
 import { Box, BoxProps, styled, useTheme } from '@mui/material';
 // custom icon
-import ArrowDownIcon from 'components/icon/arrow-down';
+import ArrowDownIcon from 'components/icon/ArrowDown';
 // style
 import styles from 'styles/components/ScrollDown.module.css';
 // type
