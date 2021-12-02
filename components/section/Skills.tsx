@@ -5,7 +5,7 @@ import { Box, Container, Icon, Typography } from '@mui/material';
 // custom component
 import SkillProgress from 'components/common/SkillProgress';
 // custom icons
-import HTML5 from 'components/icon/HTML5';
+import PhotoshopIcon from 'components/icon/Photoshop';
 // context
 import ComponentsContext from 'context/componentsContext';
 // type
@@ -41,10 +41,14 @@ const Skills: React.FunctionComponent<SkillsProps> = (props) => {
             value={77}
             Icon={
               <Icon color="primary" fontSize="large">
-                <HTML5 color="inherit" fontSize="inherit" />
+                <PhotoshopIcon
+                  bgColor="inherit"
+                  textColor="tomato"
+                  fontSize="inherit"
+                />
               </Icon>
             }
-            subtitle="HTML5 | 98%"
+            subtitle="Photoshop | 77%"
           />
         </Box>
       </Container>
