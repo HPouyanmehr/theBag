@@ -31,9 +31,15 @@ const HireMe: React.FunctionComponent<HireMeProps> = (props) => {
             I am available as freelancer.
           </Typography>
           <CustomButton
+            disableRipple
             variant="contained"
             size="large"
-            sx={{ marginTop: '2rem' }}
+            sx={{
+              marginTop: '2rem',
+              '&: hover': {
+                backgroundColor: 'rgba(255, 255, 255, 0.8)',
+              },
+            }}
           >
             Hire me
           </CustomButton>
