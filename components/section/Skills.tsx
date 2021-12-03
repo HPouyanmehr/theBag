@@ -1,7 +1,7 @@
 // react
 import * as React from 'react';
 // @mui
-import { Box, Container, Icon, Typography } from '@mui/material';
+import { Box, Container, Grid, Typography } from '@mui/material';
 // custom component
 import SkillProgress from 'components/common/SkillProgress';
 // custom icons
@@ -59,24 +59,25 @@ const Skills: React.FunctionComponent<SkillsProps> = (props) => {
         >
           My Skills
         </Typography>
-        <Box
-          sx={{
-            alignItems: 'center',
-            display: 'flex',
-            justifyContent: 'center',
-            marginTop: '2rem',
-          }}
-        >
+        <Grid container spacing={2} marginTop="2rem">
           {skills.map((skill, index) => (
-            <SkillProgress
-              size={100}
-              value={skill.progressValue}
-              Icon={skill.Icon}
+            <Grid
+              item
               key={`${skill.title} - ${skill.progressValue} - ${index}`}
-              subtitle={`${skill.title} | ${skill.progressValue}%`}
-            />
+              xs
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <SkillProgress
+                size={100}
+                value={skill.progressValue}
+                Icon={skill.Icon}
+                subtitle={`${skill.title} | ${skill.progressValue}%`}
+              />
+            </Grid>
           ))}
-        </Box>
+        </Grid>
       </Container>
     </>
   );
