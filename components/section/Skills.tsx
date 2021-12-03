@@ -9,6 +9,7 @@ import PhotoshopIcon from 'components/icon/Photoshop';
 // context
 import ComponentsContext from 'context/componentsContext';
 import IllustratorCCIcon from 'components/icon/IllustratorCC';
+import LightroomCC from 'components/icon/LightroomCC';
 // type
 interface SkillsProps {}
 
@@ -64,6 +65,20 @@ const Skills: React.FunctionComponent<SkillsProps> = (props) => {
               </Icon>
             }
             subtitle="Illustrator | 95%"
+          />
+          <SkillProgress
+            size={100}
+            value={83}
+            Icon={
+              <Icon color="primary" fontSize="large">
+                <LightroomCC
+                  bgColor="inherit"
+                  textColor="tomato"
+                  fontSize="inherit"
+                />
+              </Icon>
+            }
+            subtitle="Lightroom | 83%"
           />
         </Box>
       </Container>
