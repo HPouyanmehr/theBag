@@ -13,7 +13,7 @@ export interface IllustratorCCProps extends SvgIconProps {
 const IllustratorCC: React.FunctionComponent<IllustratorCCProps> = (props) => {
   const {
     bgColor = '#300',
-    textColor = '##ff9a00',
+    textColor = '#ff9a00',
     viewBox = '0 0 24 24',
     focusable = false,
     'aria-hidden': ariaHidden = true,
