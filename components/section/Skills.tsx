@@ -5,16 +5,45 @@ import { Box, Container, Icon, Typography } from '@mui/material';
 // custom component
 import SkillProgress from 'components/common/SkillProgress';
 // custom icons
+import IllustratorCCIcon from 'components/icon/IllustratorCC';
+import LightroomCCIcon from 'components/icon/LightroomCC';
 import PhotoshopIcon from 'components/icon/Photoshop';
 // context
 import ComponentsContext from 'context/componentsContext';
-import IllustratorCCIcon from 'components/icon/IllustratorCC';
-import LightroomCC from 'components/icon/LightroomCC';
 // type
 interface SkillsProps {}
 
 const Skills: React.FunctionComponent<SkillsProps> = (props) => {
   const { containerMaxWidth } = React.useContext(ComponentsContext);
+
+  const skills = [
+    {
+      Icon: (
+        <PhotoshopIcon bgColor="white" textColor="tomato" fontSize="large" />
+      ),
+      title: 'Photoshop',
+      progressValue: 78,
+    },
+    {
+      Icon: (
+        <LightroomCCIcon bgColor="white" textColor="tomato" fontSize="large" />
+      ),
+      title: 'Lightroom',
+      progressValue: 83,
+    },
+    {
+      Icon: (
+        <IllustratorCCIcon
+          bgColor="white"
+          textColor="tomato"
+          fontSize="large"
+        />
+      ),
+      title: 'Illustrator',
+      progressValue: 97,
+    },
+  ];
+
   return (
     <>
       <Container
@@ -38,48 +67,15 @@ const Skills: React.FunctionComponent<SkillsProps> = (props) => {
             marginTop: '2rem',
           }}
         >
-          <SkillProgress
-            size={100}
-            value={77}
-            Icon={
-              <Icon color="primary" fontSize="large">
-                <PhotoshopIcon
-                  bgColor="inherit"
-                  textColor="tomato"
-                  fontSize="inherit"
-                />
-              </Icon>
-            }
-            subtitle="Photoshop | 77%"
-          />
-          <SkillProgress
-            size={100}
-            value={95}
-            Icon={
-              <Icon color="primary" fontSize="large">
-                <IllustratorCCIcon
-                  bgColor="inherit"
-                  textColor="tomato"
-                  fontSize="inherit"
-                />
-              </Icon>
-            }
-            subtitle="Illustrator | 95%"
-          />
-          <SkillProgress
-            size={100}
-            value={83}
-            Icon={
-              <Icon color="primary" fontSize="large">
-                <LightroomCC
-                  bgColor="inherit"
-                  textColor="tomato"
-                  fontSize="inherit"
-                />
-              </Icon>
-            }
-            subtitle="Lightroom | 83%"
-          />
+          {skills.map((skill, index) => (
+            <SkillProgress
+              size={100}
+              value={skill.progressValue}
+              Icon={skill.Icon}
+              key={`${skill.title} - ${skill.progressValue} - ${index}`}
+              subtitle={`${skill.title} | ${skill.progressValue}%`}
+            />
+          ))}
         </Box>
       </Container>
     </>
