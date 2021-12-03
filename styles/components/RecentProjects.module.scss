@@ -1,0 +1,17 @@
+.sliderWrapper {
+  :global(.swiper-wrapper) {
+    margin-bottom: 2rem;
+  }
+  :global(.swiper-button-next) {
+    color: white;
+  }
+  :global(.swiper-button-prev) {
+    color: white;
+  }
+  :global(.swiper-button-disabled) {
+    opacity: 0.5;
+  }
+  :global(.swiper-pagination-bullet-active) {
+    background-color: white;
+  }
+}
