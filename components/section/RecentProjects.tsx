@@ -1,12 +1,12 @@
 // react
 import * as React from 'react';
 // swiper
-import { Pagination, Navigation } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { SwiperSlide } from 'swiper/react';
 // @mui
 import { Card, CardContent, Typography } from '@mui/material';
 // style
 import styles from 'styles/components/RecentProjects.module.scss';
+import CustomSwiper from 'components/common/CustomSwiper';
 // type
 interface RecentProjectsProps {}
 
@@ -47,16 +47,7 @@ const RecentProjects: React.FunctionComponent<RecentProjectsProps> = (
         >
           My Recent Projects
         </Typography>
-        <Swiper
-          centeredSlides
-          spaceBetween={50}
-          slidesPerView={3}
-          modules={[Navigation, Pagination]}
-          navigation
-          pagination={{
-            dynamicBullets: true,
-            clickable: true,
-          }}
+        <CustomSwiper
           onSwiper={(swiper) => setActiveIndex(swiper.activeIndex)}
           onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
           style={{
@@ -82,7 +73,7 @@ const RecentProjects: React.FunctionComponent<RecentProjectsProps> = (
               </Card>
             </SwiperSlide>
           ))}
-        </Swiper>
+        </CustomSwiper>
       </div>
     </>
   );
