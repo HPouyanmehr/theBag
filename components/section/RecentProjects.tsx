@@ -93,6 +93,8 @@ const RecentProjects: React.FunctionComponent<RecentProjectsProps> = (
                     layout="fill"
                     objectFit="cover"
                     objectPosition="top center"
+                    quality={30}
+                    loading={index === activeIndex ? 'eager' : 'lazy'}
                   />
                 </div>
                 <CardContent>
