@@ -53,7 +53,12 @@ const HireMe: React.FunctionComponent<HireMeProps> = (props) => {
           justifyContent="center"
           alignItems="center"
         >
-          <Image src="/sections/freelancer-male.svg" height={600} width={600} />
+          <Image
+            alt="A freelancer vector"
+            src="/sections/freelancer-male.svg"
+            height={600}
+            width={600}
+          />
         </Grid>
       </Grid>
     </>
