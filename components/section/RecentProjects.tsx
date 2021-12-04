@@ -108,7 +108,7 @@ const RecentProjects: React.FunctionComponent<RecentProjectsProps> = (
                       <ListItemIcon
                         sx={{ minWidth: 'auto', marginRight: '0.5rem' }}
                       >
-                        <Icon sx={{ display: 'flex', color: 'tomato' }}>
+                        <Icon color="primary" sx={{ display: 'flex' }}>
                           <FavoriteIcon color="inherit" />
                         </Icon>
                       </ListItemIcon>
@@ -120,7 +120,8 @@ const RecentProjects: React.FunctionComponent<RecentProjectsProps> = (
                   <CustomButton
                     disableRipple
                     variant="text"
-                    sx={{ color: 'black', marginLeft: 'auto' }}
+                    color="inherit"
+                    sx={{ marginLeft: 'auto' }}
                     endIcon={<ChevronRightIcon />}
                   >
                     more
