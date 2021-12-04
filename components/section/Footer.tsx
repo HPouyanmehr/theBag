@@ -1,54 +1,65 @@
 // react
 import * as React from 'react';
 // @mui
-import { Card, Typography, useTheme } from '@mui/material';
+import { Card, CardContent, Typography } from '@mui/material';
 // @mui icons
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 // custom component
-import ButtonLink from 'components/common/ButtonLink';
 import CustomIconButton from 'components/common/CustomIconButton';
+import TextLink from 'components/common/TextLink';
 // type
 interface FooterProps {}
 
 const Footer: React.FunctionComponent<FooterProps> = (props) => {
-  const { palette, shape } = useTheme();
+  const navigationLinks = [
+    { title: 'About', href: '/' },
+    { title: 'Skills', href: '/' },
+    { title: 'Certificates', href: '/' },
+    { title: 'Gallery', href: '/' },
+  ];
+
   return (
     <>
       <Card
         style={{
-          backgroundColor: palette.primary.main,
           padding: '2rem',
           margin: '2rem',
-          borderRadius: shape.borderRadius,
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'space-between',
+          justifyContent: 'center',
           alignItems: 'center',
         }}
       >
-        <div>
-          <ButtonLink sx={{ color: '#505050' }}>About</ButtonLink>
-          <ButtonLink sx={{ color: '#505050' }}>Skills</ButtonLink>
-          <ButtonLink sx={{ color: '#505050' }}>Certificates</ButtonLink>
-          <ButtonLink sx={{ color: '#505050' }}>Gallery</ButtonLink>
-        </div>
-        <div>
-          <CustomIconButton size="large" sx={{ color: '#505050' }}>
+        <CardContent style={{ padding: '0.5rem' }}>
+          {navigationLinks.map((navigation, index) => (
+            <TextLink
+              key={navigation.title + index}
+              href={navigation.href}
+              style={{
+                marginLeft: '0.5rem',
+                marginRight: '0.5rem',
+              }}
+            >
+              {navigation.title}
+            </TextLink>
+          ))}
+        </CardContent>
+        <CardContent style={{ padding: '0.5rem' }}>
+          <CustomIconButton size="large" color="inherit">
             <FacebookIcon fontSize="inherit" />
           </CustomIconButton>
-          <CustomIconButton size="large" sx={{ color: '#505050' }}>
+          <CustomIconButton size="large" color="inherit">
             <InstagramIcon fontSize="inherit" />
           </CustomIconButton>
-          <CustomIconButton size="large" sx={{ color: '#505050' }}>
+          <CustomIconButton size="large" color="inherit">
             <TwitterIcon fontSize="inherit" />
           </CustomIconButton>
-        </div>
+        </CardContent>
       </Card>
       <Typography component="p" variant="body1" textAlign="center">
-        Made with ❤️ at{' '}
-        <ButtonLink href="https://mopeim.com">mopeim</ButtonLink>
+        Made with ❤️ at <TextLink href="https://mopeim.com">mopeim</TextLink>
       </Typography>
     </>
   );
