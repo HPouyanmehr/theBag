@@ -1,5 +1,5 @@
 // type
-interface projectImage {
+export interface ProjectImage {
   alt: string;
   height: number;
   likes: number;
@@ -10,7 +10,7 @@ interface projectImage {
 export interface ProjectDetails {
   date: Date;
   id: string;
-  images: projectImage[];
+  images: ProjectImage[];
   title: string;
 }
 
