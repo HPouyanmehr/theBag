@@ -27,11 +27,12 @@ const HireMe: React.FunctionComponent<HireMeProps> = (props) => {
           alignItems="center"
           flexDirection="column"
         >
-          <Typography component="h2" variant="h4" color="primary">
+          <Typography component="h2" variant="h4">
             I am available as freelancer.
           </Typography>
           <CustomButton
             disableRipple
+            color="info"
             variant="contained"
             size="large"
             sx={{
