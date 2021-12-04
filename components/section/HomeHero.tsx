@@ -1,7 +1,7 @@
 // react
 import * as React from 'react';
 // @mui
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 // custom components
 import CenterBox from 'components/common/CenterBox';
 import TypingEffect from 'components/common/TypingEffect';
@@ -12,13 +12,15 @@ interface HomeHeroProps {}
 const HomeHero: React.FunctionComponent<HomeHeroProps> = (props) => {
   return (
     <CenterBox flexDirection="column">
-      <Typography component="p" variant="h5">
-        Hello, I am
+      <Typography component="p" variant="h5" color="text.secondary">
+        Hello, I'm
       </Typography>
-      <Typography component="h1" variant="h2" color="primary" fontWeight="bold">
+      <Typography component="h1" variant="h2" fontWeight="bold">
         John Doe
       </Typography>
-      <TypingEffect staticText="I am" text={['photographer', 'designer']} />
+      <Box color="text.secondary">
+        <TypingEffect staticText="I am" text={['photographer', 'designer']} />
+      </Box>
       <ScrollDown
         sx={{
           bottom: '10%',
