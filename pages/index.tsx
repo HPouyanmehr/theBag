@@ -1,6 +1,7 @@
 // custom component
 import CustomAppBar from 'components/common/CustomAppBar';
 import About from 'components/section/About';
+import Footer from 'components/section/Footer';
 import HireMe from 'components/section/HireMe';
 import HomeHero from 'components/section/HomeHero';
 import RecentProjects from 'components/section/RecentProjects';
@@ -17,6 +18,7 @@ const Home: NextPage = () => {
       <Skills />
       <HireMe />
       <RecentProjects />
+      <Footer />
     </>
   );
 };
