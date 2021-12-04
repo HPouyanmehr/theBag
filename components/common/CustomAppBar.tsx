@@ -43,12 +43,12 @@ const CustomAppBar: React.FunctionComponent<CustomAppBarProps> = (props) => {
             <NameLogo name="john doe" color="#383838" bgColor="white" />
             <LinkContainer sx={{ marginLeft: 'auto' }}>
               <LinksBox>
-                <ButtonLink>About</ButtonLink>
-                <ButtonLink>Skills</ButtonLink>
-                <ButtonLink>Certificates</ButtonLink>
-                <ButtonLink>Gallery</ButtonLink>
+                <ButtonLink color="info">About</ButtonLink>
+                <ButtonLink color="info">Skills</ButtonLink>
+                <ButtonLink color="info">Certificates</ButtonLink>
+                <ButtonLink color="info">Gallery</ButtonLink>
               </LinksBox>
-              <MenuToggler sx={{ display: { sm: 'none' } }} />
+              <MenuToggler color="info" sx={{ display: { sm: 'none' } }} />
             </LinkContainer>
           </Toolbar>
         </Container>
