@@ -16,7 +16,7 @@ export interface ProjectDetails {
 
 const projectsData: ProjectDetails[] = [
   {
-    date: new Date(2020, 5, 2),
+    date: new Date(2021, 12, 4),
     id: 'BridePhotoshoot-1',
     title: 'Bride photoshoot',
     images: [
@@ -68,6 +68,139 @@ const projectsData: ProjectDetails[] = [
         height: 4000,
         likes: 77,
         src: '/projects/bride/joeyy-lee-y56-YywiKUA-unsplash.jpg',
+      },
+    ],
+  },
+  {
+    date: new Date(2021, 10, 12),
+    id: 'HairMaskBoxDesign-1',
+    title: 'Hair mask box design',
+    images: [
+      {
+        alt: 'White and green labeled soft hair mask tube',
+        height: 3903,
+        likes: 29,
+        src: '/projects/tube/glenn-claire-aYrOtqypmho-unsplash.jpg',
+        width: 3741,
+      },
+      {
+        alt: 'Black and White usb hair mask box and tube',
+        height: 4000,
+        likes: 38,
+        src: '/projects/tube/glenn-claire-DuNXXPScbJM-unsplash.jpg',
+        width: 5193,
+      },
+    ],
+  },
+  {
+    date: new Date(2021, 4, 14),
+    id: 'ClothingPhotoshoot-1',
+    title: 'Clothing photoshot',
+    images: [
+      {
+        alt: 'woman in pink and white polka dot crop top and blue denim shorts',
+        height: 6000,
+        likes: 47,
+        src: '/projects/clothing/joeyy-lee-7q8omh36MYA-unsplash.jpg',
+        width: 4000,
+      },
+      {
+        alt: 'woman in pink and white floral crop top and blue denim jeans',
+        height: 5897,
+        likes: 51,
+        src: '/projects/clothing/joeyy-lee-8Vv5H3oIGjA-unsplash.jpg',
+        width: 3999,
+      },
+      {
+        alt: 'woman in white crop top and pink blazer',
+        height: 6000,
+        likes: 83,
+        src: '/projects/clothing/joeyy-lee-mu1v2Ayd6pI-unsplash.jpg',
+        width: 4000,
+      },
+      {
+        alt: 'woman in white spaghetti strap top and white skirt',
+        height: 6000,
+        likes: 96,
+        src: '/projects/clothing/joeyy-lee-D_KmOD-xDk0-unsplash.jpg',
+        width: 4000,
+      },
+      {
+        alt: 'woman in black tank top and black skirt holding black leather handbag',
+        height: 6000,
+        likes: 69,
+        src: '/projects/clothing/joeyy-lee-wZgcKvE0vko-unsplash.jpg',
+        width: 4000,
+      },
+    ],
+  },
+  {
+    date: new Date(2021, 1, 21),
+    id: 'ModelingPhotoshoot-1',
+    title: 'Modeling photoshoot',
+    images: [
+      {
+        alt: 'woman in gray dress sitting on stairs',
+        height: 4074,
+        likes: 51,
+        src: '/projects/modeling/joeyy-lee-sBcv_qRnZG8-unsplash.jpg',
+        width: 3260,
+      },
+      {
+        alt: 'woman in gray dress leaning on a stone column',
+        height: 5878,
+        likes: 66,
+        src: '/projects/modeling/joeyy-lee-MEee3-vzeKc-unsplash.jpg',
+        width: 3918,
+      },
+      {
+        alt: 'woman in gray dress walking up stairs',
+        height: 4074,
+        likes: 89,
+        src: '/projects/modeling/joeyy-lee-IhuELKvRaUU-unsplash.jpg',
+        width: 3260,
+      },
+      {
+        alt: 'woman in gray dress leaning on stair stone railing',
+        height: 6000,
+        likes: 89,
+        src: '/projects/modeling/joeyy-lee-5CEL1FDPZiM-unsplash.jpg',
+        width: 4000,
+      },
+    ],
+  },
+  {
+    date: new Date(2020, 11, 17),
+    id: 'DesigningWaterBox-1',
+    title: 'Box water is better',
+    images: [
+      {
+        alt: 'Boxed water is Better carton with waves drawn on it with a sharpie',
+        height: 3401,
+        likes: 46,
+        src: '/projects/boxWater/boxed-water-is-better-7mr6Yx-8WLc-unsplash.jpg',
+        width: 3401,
+      },
+      {
+        alt: 'Two female athlete holding box water in their hands',
+        height: 2000,
+        likes: 58,
+        src: '/projects/boxWater/boxed-water-is-better-fTwAGXHfXoE-unsplash.jpg',
+        width: 3000,
+      },
+      {
+        alt: 'Four white water carton on a yellow table',
+        height: 2000,
+        likes: 31,
+        src: '/projects/boxWater/boxed-water-is-better-rWQB4e5W5bI-unsplash.jpg',
+        width: 3000,
+      },
+      {
+        alt: 'Some white water carton on blue table',
+        height: 2000,
+        likes: 31,
+        src: '/projects/boxWater/boxed-water-is-better-3iiyde9Zj8A-unsplash.jpg',
+        width: 3000,
       },
     ],
   },
