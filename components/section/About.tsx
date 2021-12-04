@@ -3,7 +3,7 @@ import * as React from 'react';
 // next
 import Image from 'next/image';
 // @mui
-import { Grid, Typography, useTheme } from '@mui/material';
+import { Card, Grid, Typography, useTheme } from '@mui/material';
 // @mui icons
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -19,15 +19,11 @@ const About: React.FunctionComponent<AboutProps> = (props) => {
   } = useTheme();
 
   return (
-    <div
+    <Card
       style={{
         height: '90vh',
         margin: '2rem',
-        borderRadius: 4,
         overflow: 'hidden',
-        backgroundColor: primary.main,
-        boxShadow:
-          'rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px',
       }}
       id="about"
     >
@@ -86,19 +82,19 @@ const About: React.FunctionComponent<AboutProps> = (props) => {
               right: 0,
             }}
           >
-            <CustomIconButton color="info">
+            <CustomIconButton color="inherit">
               <FacebookIcon />
             </CustomIconButton>
-            <CustomIconButton color="info">
+            <CustomIconButton color="inherit">
               <InstagramIcon />
             </CustomIconButton>
-            <CustomIconButton color="info">
+            <CustomIconButton color="inherit">
               <TwitterIcon />
             </CustomIconButton>
           </div>
         </Grid>
       </Grid>
-    </div>
+    </Card>
   );
 };
 
