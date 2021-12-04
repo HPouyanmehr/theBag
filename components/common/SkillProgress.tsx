@@ -26,7 +26,11 @@ const SkillProgress: React.FunctionComponent<SkillProgressProps> = (props) => {
         }}
       >
         <Box sx={{ position: 'relative', display: 'inline-flex' }}>
-          <CircularProgress variant="determinate" {...otherProps} />
+          <CircularProgress
+            color="inherit"
+            variant="determinate"
+            {...otherProps}
+          />
           <Box
             sx={{
               top: 0,
@@ -43,12 +47,7 @@ const SkillProgress: React.FunctionComponent<SkillProgressProps> = (props) => {
           </Box>
         </Box>
         {subtitle && (
-          <Typography
-            variant="h6"
-            component="div"
-            color="primary"
-            sx={{ marginTop: '0.5rem' }}
-          >
+          <Typography variant="h6" component="div" sx={{ marginTop: '0.5rem' }}>
             {subtitle}
           </Typography>
         )}

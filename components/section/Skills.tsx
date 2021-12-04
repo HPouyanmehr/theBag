@@ -51,12 +51,7 @@ const Skills: React.FunctionComponent<SkillsProps> = (props) => {
         maxWidth={containerMaxWidth}
         sx={{ marginTop: '5rem', marginBottom: '5rem' }}
       >
-        <Typography
-          component="h2"
-          variant="h4"
-          color="primary"
-          textAlign="center"
-        >
+        <Typography component="h2" variant="h4" textAlign="center">
           My Skills
         </Typography>
         <Grid container spacing={2} marginTop="2rem">
