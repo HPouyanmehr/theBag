@@ -2,13 +2,12 @@
 import * as React from 'react';
 // @mui
 import { Card, CardContent, Typography } from '@mui/material';
-// @mui icons
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import TwitterIcon from '@mui/icons-material/Twitter';
 // custom component
 import CustomIconButton from 'components/common/CustomIconButton';
 import TextLink from 'components/common/TextLink';
+import FacebookIconLink from 'components/common/FacebookIconLink';
+import InstagramIconLink from 'components/common/InstagramIconLink';
+import TwitterIconLink from 'components/common/TwitterIconLink';
 // type
 interface FooterProps {}
 
@@ -47,15 +46,9 @@ const Footer: React.FunctionComponent<FooterProps> = (props) => {
           ))}
         </CardContent>
         <CardContent style={{ padding: '0.5rem' }}>
-          <CustomIconButton size="large" color="inherit">
-            <FacebookIcon fontSize="inherit" />
-          </CustomIconButton>
-          <CustomIconButton size="large" color="inherit">
-            <InstagramIcon fontSize="inherit" />
-          </CustomIconButton>
-          <CustomIconButton size="large" color="inherit">
-            <TwitterIcon fontSize="inherit" />
-          </CustomIconButton>
+          <FacebookIconLink />
+          <InstagramIconLink />
+          <TwitterIconLink />
         </CardContent>
       </Card>
       <Typography component="p" variant="body1" textAlign="center">
