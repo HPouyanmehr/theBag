@@ -16,7 +16,7 @@ const CustomAnchor: React.FunctionComponent<CustomAnchorProps> = (props) => {
     cursor: 'pointer',
     '&:before': {
       backgroundColor: 'currentcolor',
-      bottom: '-2px',
+      bottom: 0,
       content: '""',
       display: 'block',
       height: '2px',
