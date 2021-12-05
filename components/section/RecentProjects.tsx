@@ -3,15 +3,21 @@ import * as React from 'react';
 // swiper
 import { SwiperSlide } from 'swiper/react';
 // @mui
-import { Typography } from '@mui/material';
-// style
-import styles from 'styles/components/RecentProjects.module.scss';
+import { Box, BoxProps, Typography, styled } from '@mui/material';
+// custom component
 import CustomSwiper from 'components/common/CustomSwiper';
+import ProjectCard from 'components/common/ProjectCard';
 // fake data
 import projectsData, { ProjectImage } from 'constants/projectsData';
-import ProjectCard from 'components/common/ProjectCard';
 // type
 interface RecentProjectsProps {}
+
+const CustomWrapper = styled(Box)<BoxProps>(({ theme }) => ({
+  margin: '6rem 1rem',
+  [theme.breakpoints.up('sm')]: {
+    margin: '6rem 2rem',
+  },
+}));
 
 const RecentProjects: React.FunctionComponent<RecentProjectsProps> = (
   props
@@ -25,43 +31,45 @@ const RecentProjects: React.FunctionComponent<RecentProjectsProps> = (
   };
 
   return (
-    <>
-      <div className={styles.sliderWrapper}>
-        <Typography
-          component="h2"
-          variant="h4"
-          color="primary"
-          textAlign="center"
-        >
-          My Recent Projects
-        </Typography>
-        <CustomSwiper
-          onSwiper={(swiper) => setActiveIndex(swiper.activeIndex)}
-          onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
-          style={{
-            margin: '2rem',
-          }}
-        >
-          {projectsData.map((project, index) => (
-            <SwiperSlide
-              key={project.id + index}
-              style={{
-                transform: index === activeIndex ? 'scale(1)' : 'scale(0.75)',
-                transition: '0.2s all ease-in-out',
+    <CustomWrapper>
+      <Typography
+        component="h2"
+        variant="h4"
+        sx={{
+          textAlign: 'center',
+          marginBottom: '3rem',
+        }}
+      >
+        My Recent Projects
+      </Typography>
+      <CustomSwiper
+        onSwiper={(swiper) => setActiveIndex(swiper.activeIndex)}
+        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+      >
+        {projectsData.map((project, index) => (
+          <SwiperSlide
+            key={project.id + index}
+            style={{
+              transform: index === activeIndex ? 'scale(1)' : 'scale(0.75)',
+              transition: '0.2s all ease-in-out',
+            }}
+          >
+            <ProjectCard
+              imageAlt={project.images[0].alt}
+              imageSrc={project.images[0].src}
+              title={project.title}
+              likes={calculateLikes(project.images)}
+              imageLoading={index === activeIndex ? 'eager' : 'lazy'}
+              sx={{
+                maxWidth: '21rem',
+                marginLeft: 'auto',
+                marginRight: 'auto',
               }}
-            >
-              <ProjectCard
-                imageAlt={project.images[0].alt}
-                imageSrc={project.images[0].src}
-                title={project.title}
-                likes={calculateLikes(project.images)}
-                imageLoading={index === activeIndex ? 'eager' : 'lazy'}
-              />
-            </SwiperSlide>
-          ))}
-        </CustomSwiper>
-      </div>
-    </>
+            />
+          </SwiperSlide>
+        ))}
+      </CustomSwiper>
+    </CustomWrapper>
   );
 };
 

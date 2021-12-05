@@ -24,7 +24,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 // custom component
 import CustomButton from 'components/common/CustomButton';
 // type
-interface ProjectCardProps {
+interface ProjectCardProps extends CardProps {
   imageAlt: string;
   imageSrc: string;
   title: string;
@@ -52,10 +52,17 @@ const ImageContainer = styled(Box)<BoxProps>(({ theme }) => ({
 }));
 
 const ProjectCard: React.FunctionComponent<ProjectCardProps> = (props) => {
-  const { imageAlt, imageSrc, title, likes, imageLoading = 'lazy' } = props;
+  const {
+    imageAlt,
+    imageLoading = 'lazy',
+    imageSrc,
+    likes,
+    title,
+    ...otherProps
+  } = props;
 
   return (
-    <CustomCard>
+    <CustomCard {...otherProps}>
       <ImageContainer>
         <Image
           alt={imageAlt}
