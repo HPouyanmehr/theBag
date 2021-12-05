@@ -26,7 +26,7 @@ const TwitterIconLink: React.FunctionComponent<TwitterIconLinkProps> = (
   } = props;
 
   return (
-    <Link href={href}>
+    <Link href={href} passHref>
       <CustomIconButton
         aria-label="Facebook button"
         color={color}

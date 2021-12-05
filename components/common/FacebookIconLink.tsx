@@ -26,7 +26,7 @@ const FacebookIconLink: React.FunctionComponent<FacebookIconLinkProps> = (
   } = props;
 
   return (
-    <Link href={href}>
+    <Link href={href} passHref>
       <CustomIconButton
         aria-label="Facebook button"
         color={color}

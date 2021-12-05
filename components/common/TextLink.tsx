@@ -11,7 +11,7 @@ const TextLink: React.FunctionComponent<TextLinkProps> = (props) => {
   const { children, href = '/', ...otherProps } = props;
 
   return (
-    <Link href={href}>
+    <Link href={href} passHref>
       <CustomAnchor href={href} {...otherProps}>
         {children}
       </CustomAnchor>
