@@ -2,32 +2,19 @@
 import * as React from 'react';
 // next
 import Link from 'next/link';
+// custom component
+import CustomAnchor from 'components/common/CustomAnchor';
 // type
-import { Properties } from 'csstype';
-interface TextLinkProps extends React.HTMLProps<HTMLAnchorElement> {
-  href?: string;
-  style?: Properties;
-}
+interface TextLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {}
 
 const TextLink: React.FunctionComponent<TextLinkProps> = (props) => {
-  const {
-    children,
-    href = '/',
-    style = { color: 'inherit' },
-    ...otherProps
-  } = props;
-
-  let customStyle: Properties = {
-    ...style,
-    color: style.color ? style.color : 'inherit',
-    textDecoration: 'none',
-  };
+  const { children, href = '/', ...otherProps } = props;
 
   return (
     <Link href={href}>
-      <a style={customStyle} {...otherProps}>
+      <CustomAnchor href={href} {...otherProps}>
         {children}
-      </a>
+      </CustomAnchor>
     </Link>
   );
 };
