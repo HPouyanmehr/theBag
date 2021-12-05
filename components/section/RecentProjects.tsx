@@ -1,30 +1,15 @@
 // react
 import * as React from 'react';
-// next
-import Image from 'next/image';
 // swiper
 import { SwiperSlide } from 'swiper/react';
 // @mui
-import {
-  Card,
-  CardActions,
-  CardContent,
-  Icon,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-} from '@mui/material';
-// @mui icons
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Typography } from '@mui/material';
 // style
 import styles from 'styles/components/RecentProjects.module.scss';
 import CustomSwiper from 'components/common/CustomSwiper';
 // fake data
 import projectsData, { ProjectImage } from 'constants/projectsData';
-import CustomButton from 'components/common/CustomButton';
+import ProjectCard from 'components/common/ProjectCard';
 // type
 interface RecentProjectsProps {}
 
@@ -65,69 +50,13 @@ const RecentProjects: React.FunctionComponent<RecentProjectsProps> = (
                 transition: '0.2s all ease-in-out',
               }}
             >
-              <Card
-                sx={{
-                  minHeight: '21rem',
-                  '&: hover': {
-                    img: {
-                      transition: 'all 0.5s ease-in-out',
-                      transform: 'scale(1.4)',
-                      filter: 'blur(2px)',
-                      WebkitFilter: 'blur(2px)',
-                    },
-                  },
-                }}
-              >
-                <div
-                  style={{
-                    position: 'relative',
-                    margin: '0.5rem',
-                    height: '21rem',
-                    borderRadius: '4px',
-                    overflow: 'hidden',
-                  }}
-                >
-                  <Image
-                    alt={project.images[0].alt}
-                    src={project.images[0].src}
-                    layout="fill"
-                    objectFit="cover"
-                    objectPosition="top center"
-                    quality={30}
-                    loading={index === activeIndex ? 'eager' : 'lazy'}
-                  />
-                </div>
-                <CardContent>
-                  <Typography component="h3" variant="h6" textAlign="center">
-                    {project.title}
-                  </Typography>
-                </CardContent>
-                <CardActions disableSpacing>
-                  <List>
-                    <ListItem>
-                      <ListItemIcon
-                        sx={{ minWidth: 'auto', marginRight: '0.5rem' }}
-                      >
-                        <Icon color="primary" sx={{ display: 'flex' }}>
-                          <FavoriteIcon color="inherit" />
-                        </Icon>
-                      </ListItemIcon>
-                      <ListItemText>
-                        {calculateLikes(project.images)}
-                      </ListItemText>
-                    </ListItem>
-                  </List>
-                  <CustomButton
-                    disableRipple
-                    variant="text"
-                    color="inherit"
-                    sx={{ marginLeft: 'auto' }}
-                    endIcon={<ChevronRightIcon />}
-                  >
-                    more
-                  </CustomButton>
-                </CardActions>
-              </Card>
+              <ProjectCard
+                imageAlt={project.images[0].alt}
+                imageSrc={project.images[0].src}
+                title={project.title}
+                likes={calculateLikes(project.images)}
+                imageLoading={index === activeIndex ? 'eager' : 'lazy'}
+              />
             </SwiperSlide>
           ))}
         </CustomSwiper>
