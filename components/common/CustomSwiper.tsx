@@ -14,8 +14,6 @@ const CustomSwiper: React.FunctionComponent<CustomSwiperProps> = (props) => {
   const { breakpoints } = useTheme();
   const isUpSm = useMediaQuery(breakpoints.up('sm'));
 
-  console.log(isUpSm);
-
   return (
     <>
       <div className={styles.sliderWrapper}>
