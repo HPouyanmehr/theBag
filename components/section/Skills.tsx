@@ -1,8 +1,16 @@
 // react
 import * as React from 'react';
 // @mui
-import { Box, Container, Grid, Typography } from '@mui/material';
+import {
+  Container,
+  ContainerProps,
+  Grid,
+  GridProps,
+  Typography,
+  styled,
+} from '@mui/material';
 // custom component
+import ContainerGrid from 'components/common/ContainerGrid';
 import SkillProgress from 'components/common/SkillProgress';
 // custom icons
 import IllustratorCCIcon from 'components/icon/IllustratorCC';
@@ -12,6 +20,18 @@ import PhotoshopIcon from 'components/icon/Photoshop';
 import ComponentsContext from 'context/componentsContext';
 // type
 interface SkillsProps {}
+
+const CustomContainer = styled(Container)<ContainerProps>(({ theme }) => ({
+  marginBottom: '5rem',
+  marginTop: '5rem',
+}));
+
+const CustomGridItem = styled(Grid)<GridProps>(({ theme }) => ({
+  alignItems: 'center',
+  display: 'flex',
+  justifyContent: 'center',
+  marginBottom: '2rem',
+}));
 
 const Skills: React.FunctionComponent<SkillsProps> = (props) => {
   const { containerMaxWidth } = React.useContext(ComponentsContext);
@@ -46,23 +66,18 @@ const Skills: React.FunctionComponent<SkillsProps> = (props) => {
 
   return (
     <>
-      <Container
-        id="skills"
-        maxWidth={containerMaxWidth}
-        sx={{ marginTop: '5rem', marginBottom: '5rem' }}
-      >
+      <CustomContainer id="skills" maxWidth={containerMaxWidth}>
         <Typography component="h2" variant="h4" textAlign="center">
           My Skills
         </Typography>
-        <Grid container spacing={2} marginTop="2rem">
+        <ContainerGrid marginTop="2rem">
           {skills.map((skill, index) => (
-            <Grid
+            <CustomGridItem
               item
               key={`${skill.title} - ${skill.progressValue} - ${index}`}
-              xs
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
+              xs={12}
+              sm={6}
+              md={4}
             >
               <SkillProgress
                 size={100}
@@ -70,10 +85,10 @@ const Skills: React.FunctionComponent<SkillsProps> = (props) => {
                 Icon={skill.Icon}
                 subtitle={`${skill.title} | ${skill.progressValue}%`}
               />
-            </Grid>
+            </CustomGridItem>
           ))}
-        </Grid>
-      </Container>
+        </ContainerGrid>
+      </CustomContainer>
     </>
   );
 };
