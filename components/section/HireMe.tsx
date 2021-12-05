@@ -3,31 +3,33 @@ import * as React from 'react';
 // next
 import Image from 'next/image';
 // @mui
-import { Grid, Typography } from '@mui/material';
+import { Grid, GridProps, Typography, styled } from '@mui/material';
 import CustomButton from 'components/common/CustomButton';
+import ContainerGrid from 'components/common/ContainerGrid';
 // type
 interface HireMeProps {}
+
+const CustomContainerGrid = styled(ContainerGrid)<GridProps>(({ theme }) => ({
+  justifyContent: 'center',
+  padding: '1rem',
+  [theme.breakpoints.up('sm')]: {
+    padding: '2rem',
+  },
+}));
+
+const CustomGridItem = styled(Grid)<GridProps>(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'center',
+  flexDirection: 'column',
+  alignItems: 'center',
+}));
 
 const HireMe: React.FunctionComponent<HireMeProps> = (props) => {
   return (
     <>
-      <Grid
-        container
-        spacing={2}
-        sx={{
-          minHeight: '100vh',
-          padding: '2rem',
-        }}
-      >
-        <Grid
-          item
-          md
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          flexDirection="column"
-        >
-          <Typography component="h2" variant="h4">
+      <CustomContainerGrid>
+        <CustomGridItem item md order={{ xs: 2, md: 1 }}>
+          <Typography component="h2" variant="h4" textAlign="center">
             I am available as freelancer.
           </Typography>
           <CustomButton
@@ -44,23 +46,16 @@ const HireMe: React.FunctionComponent<HireMeProps> = (props) => {
           >
             Hire me
           </CustomButton>
-        </Grid>
-        <Grid
-          item
-          md
-          position="relative"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-        >
+        </CustomGridItem>
+        <CustomGridItem item md order={{ xs: 1, md: 2 }}>
           <Image
             alt="A freelancer vector"
             src="/sections/freelancer-male.svg"
             height={600}
             width={600}
           />
-        </Grid>
-      </Grid>
+        </CustomGridItem>
+      </CustomContainerGrid>
     </>
   );
 };
