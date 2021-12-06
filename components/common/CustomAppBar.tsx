@@ -15,6 +15,7 @@ import {
 import NameLogo from 'components/common/NameLogo';
 import ButtonLink from 'components/common/ButtonLink';
 import MenuToggler from 'components/common/MenuToggler';
+import ConstantsContext from 'context/constantsContext';
 // type
 interface CustomAppBarProps {}
 
@@ -29,12 +30,18 @@ const LinkContainer = styled(Box)<BoxProps>(({ theme }) => ({
 }));
 
 const LinksBox = styled(Box)<BoxProps>(({ theme }) => ({
+  '& > :not(:first-child)': {
+    marginLeft: '0.5rem',
+  },
   [theme.breakpoints.down('sm')]: {
     display: 'none',
   },
 }));
 
 const CustomAppBar: React.FunctionComponent<CustomAppBarProps> = (props) => {
+  const { navLinks } = React.useContext(ConstantsContext);
+  navLinks?.sort((a, b) => (a.order > b.order ? 1 : -1));
+
   return (
     <>
       <CustomAppBarRoot position="absolute">
@@ -43,10 +50,15 @@ const CustomAppBar: React.FunctionComponent<CustomAppBarProps> = (props) => {
             <NameLogo name="john doe" color="#383838" bgColor="white" />
             <LinkContainer sx={{ marginLeft: 'auto' }}>
               <LinksBox>
-                <ButtonLink color="info">About</ButtonLink>
-                <ButtonLink color="info">Skills</ButtonLink>
-                <ButtonLink color="info">Certificates</ButtonLink>
-                <ButtonLink color="info">Gallery</ButtonLink>
+                {navLinks?.map((navLink, index) => (
+                  <ButtonLink
+                    key={navLink.label + index + navLink.href}
+                    href={navLink.href}
+                    {...navLink.buttonProps}
+                  >
+                    {navLink.label}
+                  </ButtonLink>
+                ))}
               </LinksBox>
               <MenuToggler color="info" sx={{ display: { sm: 'none' } }} />
             </LinkContainer>
