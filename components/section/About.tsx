@@ -11,6 +11,7 @@ import {
   CardActionsProps,
   CardProps,
   Grid,
+  Skeleton,
   Typography,
   styled,
 } from '@mui/material';
@@ -60,6 +61,8 @@ const CustomCardActions = styled(CardActions)<CardActionsProps>(
 );
 
 const About: React.FunctionComponent<AboutProps> = (props) => {
+  const [isLoaded, setIsLoaded] = React.useState(false);
+
   return (
     <CustomCard id="about">
       <ContainerGrid sx={{ marginTop: 0, height: '100%' }}>
@@ -68,11 +71,22 @@ const About: React.FunctionComponent<AboutProps> = (props) => {
             <Image
               alt="John Doe profile image"
               layout="fill"
-              loading="eager"
               objectFit="cover"
               objectPosition="center center"
+              onLoad={() => setIsLoaded(true)}
               src="/profile.jpg"
             />
+            {!isLoaded && (
+              <Skeleton
+                variant="rectangular"
+                sx={{
+                  backgroundColor: 'currentcolor',
+                  height: '100%',
+                  position: 'absolute',
+                  width: '100%',
+                }}
+              />
+            )}
           </ImageWrapper>
         </Grid>
         <Grid
