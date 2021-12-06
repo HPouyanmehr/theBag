@@ -30,7 +30,7 @@ const LinkContainer = styled(Box)<BoxProps>(({ theme }) => ({
 }));
 
 const LinksBox = styled(Box)<BoxProps>(({ theme }) => ({
-  '& > :not(:first-child)': {
+  '& > :not(a:first-of-type)': {
     marginLeft: '0.5rem',
   },
   [theme.breakpoints.down('sm')]: {
