@@ -43,9 +43,6 @@ const HireMe: React.FunctionComponent<HireMeProps> = (props) => {
             size="large"
             sx={{
               marginTop: '2rem',
-              '&: hover': {
-                backgroundColor: 'rgba(255, 255, 255, 0.8)',
-              },
             }}
           >
             Hire me
