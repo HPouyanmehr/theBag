@@ -10,7 +10,8 @@ const CustomButtonRoot = styled(Button)<ButtonProps>(({ theme }) => ({
   boxShadow: 'none',
   '&: hover': {
     boxShadow: 'none',
-    background: 'none',
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    color: 'currentcolor',
   },
   '&: active': {
     opacity: 0.5,
@@ -20,7 +21,12 @@ const CustomButtonRoot = styled(Button)<ButtonProps>(({ theme }) => ({
 
 const CustomButton: React.FunctionComponent<CustomButtonProps> = (props) => {
   const { children, ...otherProps } = props;
-  return <CustomButtonRoot {...otherProps}>{children}</CustomButtonRoot>;
+
+  return (
+    <CustomButtonRoot disableRipple {...otherProps}>
+      {children}
+    </CustomButtonRoot>
+  );
 };
 
 export default CustomButton;

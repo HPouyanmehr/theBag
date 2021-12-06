@@ -16,10 +16,8 @@ const ButtonLink: React.FunctionComponent<ButtonLinkProps> = (props) => {
   const { children, href = '#', margin, ...otherProps } = props;
   return (
     <Link href={href}>
-      <a style={{ margin }}>
-        <CustomButton disableRipple {...otherProps}>
-          {children}
-        </CustomButton>
+      <a style={{ color: 'inherit', margin, textDecoration: 'none' }}>
+        <CustomButton {...otherProps}>{children}</CustomButton>
       </a>
     </Link>
   );
