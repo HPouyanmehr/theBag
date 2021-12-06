@@ -59,7 +59,6 @@ const RecentProjects: React.FunctionComponent<RecentProjectsProps> = (
               imageSrc={project.images[0].src}
               title={project.title}
               likes={calculateLikes(project.images)}
-              imageLoading={index === activeIndex ? 'eager' : 'lazy'}
               sx={{
                 maxWidth: '21rem',
                 marginLeft: 'auto',

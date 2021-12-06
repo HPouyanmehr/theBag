@@ -1,7 +1,8 @@
 // react
 import * as React from 'react';
 // next
-import Image from 'next/image';
+import dynamic from 'next/dynamic';
+const Image = dynamic(() => import('next/image'));
 // @mui
 import {
   Box,
@@ -15,8 +16,10 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  Skeleton,
   Typography,
   styled,
+  useTheme,
 } from '@mui/material';
 // @mui icons
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -29,7 +32,6 @@ interface ProjectCardProps extends CardProps {
   imageSrc: string;
   title: string;
   likes: number;
-  imageLoading?: 'eager' | 'lazy';
 }
 
 const CustomCard = styled(Card)<CardProps>(({ theme }) => ({
@@ -45,21 +47,18 @@ const CustomCard = styled(Card)<CardProps>(({ theme }) => ({
 
 const ImageContainer = styled(Box)<BoxProps>(({ theme }) => ({
   position: 'relative',
-  margin: '0.5rem',
+  margin: '1rem',
   height: '21rem',
   borderRadius: theme.shape.borderRadius,
   overflow: 'hidden',
 }));
 
 const ProjectCard: React.FunctionComponent<ProjectCardProps> = (props) => {
+  const { imageAlt, imageSrc, likes, title, ...otherProps } = props;
+  const [isLoaded, setIsLoaded] = React.useState(false);
   const {
-    imageAlt,
-    imageLoading = 'lazy',
-    imageSrc,
-    likes,
-    title,
-    ...otherProps
-  } = props;
+    palette: { primary },
+  } = useTheme();
 
   return (
     <CustomCard {...otherProps}>
@@ -70,13 +69,23 @@ const ProjectCard: React.FunctionComponent<ProjectCardProps> = (props) => {
           layout="fill"
           objectFit="cover"
           objectPosition="top center"
+          onLoad={() => setIsLoaded(true)}
           quality={30}
-          loading={imageLoading}
         />
+        {!isLoaded && (
+          <Skeleton
+            variant="rectangular"
+            sx={{ backgroundColor: primary.main, height: '100%' }}
+          />
+        )}
       </ImageContainer>
       <CardContent>
         <Typography component="h3" variant="h6" textAlign="center">
-          {title}
+          {isLoaded ? (
+            title
+          ) : (
+            <Skeleton sx={{ backgroundColor: primary.main }} />
+          )}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -87,7 +96,15 @@ const ProjectCard: React.FunctionComponent<ProjectCardProps> = (props) => {
                 <FavoriteIcon color="inherit" />
               </Icon>
             </ListItemIcon>
-            <ListItemText>{likes}</ListItemText>
+            <ListItemText>
+              {isLoaded ? (
+                likes
+              ) : (
+                <Skeleton
+                  sx={{ backgroundColor: primary.main, width: '2rem' }}
+                />
+              )}
+            </ListItemText>
           </ListItem>
         </List>
         <CustomButton
