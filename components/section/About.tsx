@@ -39,8 +39,13 @@ const ImageWrapper = styled(Box)<BoxProps>(({ theme }) => ({
 }));
 
 const CustomCard = styled(Card)<CardProps>(({ theme }) => ({
-  overflow: 'hidden',
   margin: '1rem',
+  overflow: 'hidden',
+  scrollMarginTop: '1rem',
+  [theme.breakpoints.up('sm')]: {
+    margin: '2rem',
+    scrollMarginTop: '2rem',
+  },
   [theme.breakpoints.up('md')]: {
     height: 'fit-content',
   },
