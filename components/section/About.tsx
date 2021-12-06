@@ -38,13 +38,18 @@ const ImageWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   },
 }));
 
+const CustomContainer = styled(Box)<BoxProps>(({ theme }) => ({
+  scrollMarginTop: '1rem',
+  [theme.breakpoints.up('sm')]: {
+    scrollMarginTop: '2rem',
+  },
+}));
+
 const CustomCard = styled(Card)<CardProps>(({ theme }) => ({
   margin: '1rem',
   overflow: 'hidden',
-  scrollMarginTop: '1rem',
   [theme.breakpoints.up('sm')]: {
     margin: '2rem',
-    scrollMarginTop: '2rem',
   },
   [theme.breakpoints.up('md')]: {
     height: 'fit-content',
@@ -69,72 +74,74 @@ const About: React.FunctionComponent<AboutProps> = (props) => {
   const [isLoaded, setIsLoaded] = React.useState(false);
 
   return (
-    <CustomCard id="about">
-      <ContainerGrid sx={{ marginTop: 0, height: '100%' }}>
-        <Grid item xs={12} md={6} style={{ padding: 0 }}>
-          <ImageWrapper>
-            <Image
-              alt="John Doe profile image"
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center center"
-              onLoad={() => setIsLoaded(true)}
-              src="/profile.jpg"
-            />
-            {!isLoaded && (
-              <Skeleton
-                variant="rectangular"
-                sx={{
-                  backgroundColor: 'currentcolor',
-                  height: '100%',
-                  position: 'absolute',
-                  width: '100%',
-                }}
+    <CustomContainer id="about">
+      <CustomCard>
+        <ContainerGrid sx={{ marginTop: 0, height: '100%' }}>
+          <Grid item xs={12} md={6} style={{ padding: 0 }}>
+            <ImageWrapper>
+              <Image
+                alt="John Doe profile image"
+                layout="fill"
+                objectFit="cover"
+                objectPosition="center center"
+                onLoad={() => setIsLoaded(true)}
+                src="/profile.jpg"
               />
-            )}
-          </ImageWrapper>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          md={6}
-          style={{ padding: '2rem', position: 'relative' }}
-        >
-          <Card
-            sx={{ boxShadow: 'none', height: '100%', position: 'relative' }}
+              {!isLoaded && (
+                <Skeleton
+                  variant="rectangular"
+                  sx={{
+                    backgroundColor: 'currentcolor',
+                    height: '100%',
+                    position: 'absolute',
+                    width: '100%',
+                  }}
+                />
+              )}
+            </ImageWrapper>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={6}
+            style={{ padding: '2rem', position: 'relative' }}
           >
-            <Typography component="h2" variant="h5" fontWeight="bold">
-              A bit about me
-            </Typography>
-            <Typography component="p" variant="body1">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Aspernatur, sed nobis. Facere est eaque at blanditiis vel dolore
-              ipsam ad nam? Sed saepe commodi ducimus quae odio vero assumenda
-              reprehenderit reiciendis optio maiores perspiciatis doloribus,
-              praesentium non accusantium, beatae perferendis molestias!
-              Asperiores non praesentium, ex suscipit officia ad impedit nulla
-              laboriosam magnam doloremque perspiciatis alias esse corrupti
-              beatae dolore perferendis, blanditiis illo adipisci dolores modi
-              eius minus. Qui, sunt. Ipsum officiis aliquid pariatur iusto
-              deleniti.
-            </Typography>
-            <Typography component="p" variant="body1">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi
-              illo, architecto officiis recusandae praesentium impedit pariatur
-              repellendus, natus ducimus sapiente eius odio aspernatur magni
-              repellat explicabo laboriosam voluptatibus excepturi voluptas,
-              accusamus libero vel tempora quod consequuntur. Quaerat id eveniet
-              eaque?
-            </Typography>
-            <CustomCardActions>
-              <FacebookIconLink />
-              <InstagramIconLink />
-              <TwitterIconLink />
-            </CustomCardActions>
-          </Card>
-        </Grid>
-      </ContainerGrid>
-    </CustomCard>
+            <Card
+              sx={{ boxShadow: 'none', height: '100%', position: 'relative' }}
+            >
+              <Typography component="h2" variant="h5" fontWeight="bold">
+                A bit about me
+              </Typography>
+              <Typography component="p" variant="body1">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Aspernatur, sed nobis. Facere est eaque at blanditiis vel dolore
+                ipsam ad nam? Sed saepe commodi ducimus quae odio vero assumenda
+                reprehenderit reiciendis optio maiores perspiciatis doloribus,
+                praesentium non accusantium, beatae perferendis molestias!
+                Asperiores non praesentium, ex suscipit officia ad impedit nulla
+                laboriosam magnam doloremque perspiciatis alias esse corrupti
+                beatae dolore perferendis, blanditiis illo adipisci dolores modi
+                eius minus. Qui, sunt. Ipsum officiis aliquid pariatur iusto
+                deleniti.
+              </Typography>
+              <Typography component="p" variant="body1">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Eligendi illo, architecto officiis recusandae praesentium
+                impedit pariatur repellendus, natus ducimus sapiente eius odio
+                aspernatur magni repellat explicabo laboriosam voluptatibus
+                excepturi voluptas, accusamus libero vel tempora quod
+                consequuntur. Quaerat id eveniet eaque?
+              </Typography>
+              <CustomCardActions>
+                <FacebookIconLink />
+                <InstagramIconLink />
+                <TwitterIconLink />
+              </CustomCardActions>
+            </Card>
+          </Grid>
+        </ContainerGrid>
+      </CustomCard>
+    </CustomContainer>
   );
 };
 
