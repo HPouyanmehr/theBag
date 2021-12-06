@@ -1,11 +1,13 @@
 // react
 import * as React from 'react';
 // next
-import Image from 'next/image';
+import dynamic from 'next/dynamic';
+const Image = dynamic(() => import('next/image'));
 // @mui
-import { Grid, GridProps, Typography, styled } from '@mui/material';
-import CustomButton from 'components/common/CustomButton';
-import ContainerGrid from 'components/common/ContainerGrid';
+import { Grid, GridProps, Skeleton, Typography, styled } from '@mui/material';
+// custom component
+const CustomButton = dynamic(() => import('components/common/CustomButton'));
+const ContainerGrid = dynamic(() => import('components/common/ContainerGrid'));
 // type
 interface HireMeProps {}
 
@@ -25,6 +27,8 @@ const CustomGridItem = styled(Grid)<GridProps>(({ theme }) => ({
 }));
 
 const HireMe: React.FunctionComponent<HireMeProps> = (props) => {
+  const [isLoaded, setIsLoaded] = React.useState(false);
+
   return (
     <>
       <CustomContainerGrid>
@@ -47,13 +51,32 @@ const HireMe: React.FunctionComponent<HireMeProps> = (props) => {
             Hire me
           </CustomButton>
         </CustomGridItem>
-        <CustomGridItem item md order={{ xs: 1, md: 2 }}>
+        <CustomGridItem
+          item
+          md
+          order={{ xs: 1, md: 2 }}
+          sx={{ position: 'relative' }}
+        >
           <Image
             alt="A freelancer vector"
-            src="/sections/freelancer-male.svg"
             height={600}
+            loading="lazy"
+            onLoad={() => setIsLoaded(true)}
+            src="/sections/freelancer-male.svg"
             width={600}
           />
+          {!isLoaded && (
+            <Skeleton
+              variant="rectangular"
+              sx={{
+                backgroundColor: 'currentcolor',
+                borderRadius: '4px',
+                width: '100%',
+                height: '100%',
+                position: 'absolute',
+              }}
+            />
+          )}
         </CustomGridItem>
       </CustomContainerGrid>
     </>
