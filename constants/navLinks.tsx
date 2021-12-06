@@ -13,7 +13,7 @@ export interface NavLink {
   Icon: React.ReactNode;
   iconProps?: IconProps;
   label: string;
-  order?: number;
+  order: number;
   sidebarOrder?: number;
   sidebarVisible?: boolean;
 }
