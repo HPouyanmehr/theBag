@@ -6,6 +6,7 @@ import { CacheProvider, EmotionCache } from '@emotion/react';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 // context
 import ComponentsContext from 'context/componentsContext';
+import ConstantsContext from 'context/constantsContext';
 // style
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -30,13 +31,16 @@ interface MyAppProps extends AppProps {
 const MyApp = (props: MyAppProps) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   const componentsContext = React.useContext(ComponentsContext);
+  const constantsContext = React.useContext(ConstantsContext);
 
   return (
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={lightTheme}>
         <CssBaseline />
         <ComponentsContext.Provider value={componentsContext}>
-          <Component {...pageProps} />
+          <ConstantsContext.Provider value={constantsContext}>
+            <Component {...pageProps} />
+          </ConstantsContext.Provider>
         </ComponentsContext.Provider>
       </ThemeProvider>
     </CacheProvider>
