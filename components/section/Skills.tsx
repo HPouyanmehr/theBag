@@ -24,6 +24,7 @@ interface SkillsProps {}
 const CustomContainer = styled(Container)<ContainerProps>(({ theme }) => ({
   marginBottom: '5rem',
   marginTop: '5rem',
+  scrollMarginTop: '2rem',
 }));
 
 const CustomGridItem = styled(Grid)<GridProps>(({ theme }) => ({
