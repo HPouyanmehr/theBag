@@ -94,11 +94,11 @@ const CustomAppBar: React.FunctionComponent<CustomAppBarProps> = (props) => {
               {navLinks?.map((navLink, index) => (
                 <Grow
                   in={dropdownState}
+                  key={navLink.label + index}
                   style={{ transformOrigin: 'center left' }}
                   {...(dropdownState ? { timeout: index * 300 } : {})}
                 >
                   <ListItemButton
-                    key={navLink.label + index}
                     onClick={() => handleDropdownItemClick(navLink.href)}
                     sx={{
                       borderRadius: '4px',
