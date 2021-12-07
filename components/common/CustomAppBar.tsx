@@ -20,6 +20,7 @@ import NameLogo from 'components/common/NameLogo';
 import ButtonLink from 'components/common/ButtonLink';
 import MenuToggler from 'components/common/MenuToggler';
 import ConstantsContext from 'context/constantsContext';
+import useOnClickOutside from 'hooks/useOnClickOutside';
 // type
 interface CustomAppBarProps {}
 
@@ -47,9 +48,16 @@ const CustomAppBar: React.FunctionComponent<CustomAppBarProps> = (props) => {
   const { navLinks } = React.useContext(ConstantsContext);
   navLinks?.sort((a, b) => (a.order > b.order ? 1 : -1));
 
+  const appBarRef = React.useRef(null);
+  const handleClickOutside = () => {
+    if (dropdownState) setDropdownState(false);
+  };
+
+  useOnClickOutside(appBarRef, handleClickOutside);
+
   return (
     <>
-      <CustomAppBarRoot position="absolute">
+      <CustomAppBarRoot position="absolute" ref={appBarRef}>
         <Container>
           <Toolbar>
             <NameLogo name="john doe" color="#383838" bgColor="white" />
