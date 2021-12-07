@@ -68,7 +68,12 @@ const CustomAppBar: React.FunctionComponent<CustomAppBarProps> = (props) => {
       <CustomAppBarRoot position="absolute" ref={appBarRef}>
         <Container>
           <Toolbar>
-            <NameLogo name="john doe" color="#383838" bgColor="white" />
+            <NameLogo
+              bgColor="white"
+              color="#383838"
+              name="john doe"
+              onClick={() => router.push('/')}
+            />
             <LinkContainer sx={{ marginLeft: 'auto' }}>
               <LinksBox>
                 {navLinks?.map((navLink, index) => (
