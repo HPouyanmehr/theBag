@@ -7,11 +7,11 @@ import {
   Box,
   BoxProps,
   Container,
+  Grow,
   List,
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  Slide,
   styled,
   Toolbar,
 } from '@mui/material';
@@ -43,10 +43,9 @@ const LinksBox = styled(Box)<BoxProps>(({ theme }) => ({
 }));
 
 const CustomAppBar: React.FunctionComponent<CustomAppBarProps> = (props) => {
-  const [openDropdown, setOpenDropdown] = React.useState(false);
+  const [dropdownState, setDropdownState] = React.useState(false);
   const { navLinks } = React.useContext(ConstantsContext);
   navLinks?.sort((a, b) => (a.order > b.order ? 1 : -1));
-  const containerRef = React.useRef(null);
 
   return (
     <>
@@ -68,39 +67,43 @@ const CustomAppBar: React.FunctionComponent<CustomAppBarProps> = (props) => {
               </LinksBox>
               <MenuToggler
                 color="info"
-                onClick={() => setOpenDropdown(!openDropdown)}
-                open={openDropdown}
+                onClick={() => setDropdownState(!dropdownState)}
+                open={dropdownState}
                 sx={{ display: { sm: 'none' } }}
               />
             </LinkContainer>
           </Toolbar>
-          <Box ref={containerRef}>
-            <Slide
-              container={containerRef.current}
-              direction="down"
-              in={openDropdown}
-              mountOnEnter
-              unmountOnExit
-            >
-              <List component="div">
-                {navLinks?.map((navLink, index) => (
+          <Box>
+            <List component="div">
+              {navLinks?.map((navLink, index) => (
+                <Grow
+                  in={dropdownState}
+                  style={{ transformOrigin: 'center left' }}
+                  {...(dropdownState ? { timeout: index * 300 } : {})}
+                >
                   <ListItemButton
                     key={navLink.label + index}
                     sx={{
+                      borderRadius: '4px',
                       '&: hover': {
                         backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                        borderRadius: '4px',
                       },
                     }}
                   >
-                    <ListItemIcon {...navLink.iconProps}>
+                    <ListItemIcon
+                      sx={{
+                        color: 'inherit',
+                        fontSize: 'large',
+                        minWidth: '2rem',
+                      }}
+                    >
                       {navLink.Icon}
                     </ListItemIcon>
                     <ListItemText primary={navLink.label} />
                   </ListItemButton>
-                ))}
-              </List>
-            </Slide>
+                </Grow>
+              ))}
+            </List>
           </Box>
         </Container>
       </CustomAppBarRoot>
