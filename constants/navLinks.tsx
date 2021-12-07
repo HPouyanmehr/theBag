@@ -11,7 +11,6 @@ export interface NavLink {
   buttonProps?: ButtonProps;
   href: string;
   Icon: React.ReactNode;
-  iconProps?: IconProps;
   label: string;
   order: number;
   sidebarOrder?: number;
@@ -22,8 +21,7 @@ const navLinks: NavLink[] = [
   {
     buttonProps: { color: 'info' },
     href: '/#about',
-    Icon: <InfoIcon />,
-    iconProps: { color: 'inherit', fontSize: 'inherit' },
+    Icon: <InfoIcon color="inherit" fontSize="inherit" />,
     label: 'About',
     order: 1,
     sidebarVisible: false,
@@ -31,8 +29,7 @@ const navLinks: NavLink[] = [
   {
     buttonProps: { color: 'info' },
     href: '/#skills',
-    Icon: <ConstructionIcon />,
-    iconProps: { color: 'inherit', fontSize: 'inherit' },
+    Icon: <ConstructionIcon color="inherit" fontSize="inherit" />,
     label: 'Skills',
     order: 2,
     sidebarVisible: false,
@@ -40,8 +37,7 @@ const navLinks: NavLink[] = [
   {
     buttonProps: { color: 'info', variant: 'contained' },
     href: '/projects',
-    Icon: <WorkspacesIcon />,
-    iconProps: { color: 'inherit', fontSize: 'inherit' },
+    Icon: <WorkspacesIcon color="inherit" fontSize="inherit" />,
     label: 'My Projects',
     order: 4,
     sidebarOrder: 1,
@@ -50,8 +46,7 @@ const navLinks: NavLink[] = [
   {
     buttonProps: { color: 'info', variant: 'outlined' },
     href: '/hire-me',
-    Icon: <WorkIcon />,
-    iconProps: { color: 'inherit', fontSize: 'inherit' },
+    Icon: <WorkIcon color="inherit" fontSize="inherit" />,
     label: 'Hire Me',
     order: 3,
     sidebarOrder: 2,
