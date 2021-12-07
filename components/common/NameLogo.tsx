@@ -9,6 +9,7 @@ interface NameLogoProps {
   color?: Property.Color;
   fontSize?: Property.FontSize;
   name?: string;
+  onClick?: () => void;
 }
 
 const NameLogo: React.FunctionComponent<NameLogoProps> = (props) => {
@@ -18,11 +19,14 @@ const NameLogo: React.FunctionComponent<NameLogoProps> = (props) => {
     color = 'inherit',
     fontSize = 'inherit',
     name = 'Name',
+    onClick,
   } = props;
   return (
     <div
+      onClick={onClick && onClick}
       style={{
         alignItems: 'center',
+        cursor: 'pointer',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
