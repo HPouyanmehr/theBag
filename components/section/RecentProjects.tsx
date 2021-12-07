@@ -8,7 +8,9 @@ import { Box, BoxProps, Typography, styled } from '@mui/material';
 import CustomSwiper from 'components/common/CustomSwiper';
 import ProjectCard from 'components/common/ProjectCard';
 // fake data
-import projectsData, { ProjectImage } from 'constants/projectsData';
+import projectsData from 'constants/projectsData';
+// utility
+import calcArrayOfObj from 'utility/calcArrayOfObj';
 // type
 interface RecentProjectsProps {}
 
@@ -23,12 +25,6 @@ const RecentProjects: React.FunctionComponent<RecentProjectsProps> = (
   props
 ) => {
   const [activeIndex, setActiveIndex] = React.useState<number>();
-
-  const calculateLikes = (images: ProjectImage[]) => {
-    let totalLikes = 0;
-    images.forEach((image) => (totalLikes += image.likes));
-    return totalLikes;
-  };
 
   return (
     <CustomWrapper>
@@ -58,7 +54,7 @@ const RecentProjects: React.FunctionComponent<RecentProjectsProps> = (
               imageAlt={project.images[0].alt}
               imageSrc={project.images[0].src}
               title={project.title}
-              likes={calculateLikes(project.images)}
+              likes={calcArrayOfObj(project.images, 'likes')}
               sx={{
                 maxWidth: '21rem',
                 marginLeft: 'auto',
