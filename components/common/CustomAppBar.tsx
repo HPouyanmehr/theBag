@@ -1,5 +1,7 @@
 // react
 import * as React from 'react';
+// next
+import { useRouter } from 'next/router';
 // @mui
 import {
   AppBar,
@@ -55,6 +57,12 @@ const CustomAppBar: React.FunctionComponent<CustomAppBarProps> = (props) => {
 
   useOnClickOutside(appBarRef, handleClickOutside);
 
+  const router = useRouter();
+  const handleDropdownItemClick = (href: string) => {
+    setDropdownState(false);
+    router.push(href);
+  };
+
   return (
     <>
       <CustomAppBarRoot position="absolute" ref={appBarRef}>
@@ -91,6 +99,7 @@ const CustomAppBar: React.FunctionComponent<CustomAppBarProps> = (props) => {
                 >
                   <ListItemButton
                     key={navLink.label + index}
+                    onClick={() => handleDropdownItemClick(navLink.href)}
                     sx={{
                       borderRadius: '4px',
                       '&: hover': {
