@@ -14,12 +14,17 @@ import {
   Skeleton,
   Typography,
   styled,
+  CardContent,
+  Collapse,
+  useMediaQuery,
+  useTheme,
 } from '@mui/material';
 // custom component
 import FacebookIconLink from 'components/common/FacebookIconLink';
 import InstagramIconLink from 'components/common/InstagramIconLink';
 import TwitterIconLink from 'components/common/TwitterIconLink';
 import ContainerGrid from 'components/common/ContainerGrid';
+import ExpandMoreIconButton from 'components/common/ExpandMoreIconButton';
 // type
 interface AboutProps {}
 
@@ -61,8 +66,11 @@ const CustomCard = styled(Card)<CardProps>(({ theme }) => ({
 
 const CustomCardActions = styled(CardActions)<CardActionsProps>(
   ({ theme }) => ({
+    justifyContent: 'space-between',
     width: '100%',
-    justifyContent: 'flex-end',
+    [theme.breakpoints.up('md')]: {
+      justifyContent: 'flex-end',
+    },
     [theme.breakpoints.up('lg')]: {
       position: 'absolute',
       bottom: 0,
@@ -72,6 +80,15 @@ const CustomCardActions = styled(CardActions)<CardActionsProps>(
 
 const About: React.FunctionComponent<AboutProps> = (props) => {
   const [isLoaded, setIsLoaded] = React.useState(false);
+  const [showMore, setShowMore] = React.useState(false);
+
+  const theme = useTheme();
+  const isUpMd = useMediaQuery(theme.breakpoints.up('md'));
+
+  React.useEffect(() => {
+    if (!showMore && isUpMd) setShowMore(true);
+    if (showMore && !isUpMd) setShowMore(false);
+  }, [isUpMd]);
 
   return (
     <CustomContainer id="about">
@@ -112,30 +129,50 @@ const About: React.FunctionComponent<AboutProps> = (props) => {
               <Typography component="h2" variant="h5" fontWeight="bold">
                 A bit about me
               </Typography>
-              <Typography component="p" variant="body1">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Aspernatur, sed nobis. Facere est eaque at blanditiis vel dolore
-                ipsam ad nam? Sed saepe commodi ducimus quae odio vero assumenda
-                reprehenderit reiciendis optio maiores perspiciatis doloribus,
-                praesentium non accusantium, beatae perferendis molestias!
-                Asperiores non praesentium, ex suscipit officia ad impedit nulla
-                laboriosam magnam doloremque perspiciatis alias esse corrupti
-                beatae dolore perferendis, blanditiis illo adipisci dolores modi
-                eius minus. Qui, sunt. Ipsum officiis aliquid pariatur iusto
-                deleniti.
-              </Typography>
-              <Typography component="p" variant="body1">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Eligendi illo, architecto officiis recusandae praesentium
-                impedit pariatur repellendus, natus ducimus sapiente eius odio
-                aspernatur magni repellat explicabo laboriosam voluptatibus
-                excepturi voluptas, accusamus libero vel tempora quod
-                consequuntur. Quaerat id eveniet eaque?
-              </Typography>
-              <CustomCardActions>
-                <FacebookIconLink />
-                <InstagramIconLink />
-                <TwitterIconLink />
+              <CardContent>
+                <Typography component="p" variant="body1">
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Dolorum exercitationem voluptate sapiente necessitatibus alias
+                  rerum voluptates accusamus tenetur, eaque natus possimus aut
+                  magni odio saepe eligendi laudantium. Enim, illo quod.
+                </Typography>
+                <Collapse
+                  in={showMore}
+                  sx={{
+                    p: {
+                      marginTop: '0.5rem',
+                    },
+                  }}
+                  timeout="auto"
+                  unmountOnExit
+                >
+                  <Typography component="p" variant="body1">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Sed quis, vitae ea repellendus pariatur nihil ad cupiditate
+                    minima et quasi laborum. Amet eius, aliquam impedit modi
+                    tempore doloribus iusto. Nobis nam, unde officia iusto
+                    repellat obcaecati temporibus recusandae corrupti odit
+                    voluptatem dolor est ullam ad eligendi eum, et molestiae.
+                    Possimus porro adipisci reiciendis corrupti dignissimos fuga
+                    aliquam aperiam quisquam praesentium.
+                  </Typography>
+                </Collapse>
+              </CardContent>
+              <CustomCardActions disableSpacing>
+                {!isUpMd && (
+                  <ExpandMoreIconButton
+                    open={showMore}
+                    onClick={() => setShowMore(!showMore)}
+                    sx={{
+                      justifySelf: 'flex-start',
+                    }}
+                  />
+                )}
+                <div>
+                  <FacebookIconLink />
+                  <InstagramIconLink />
+                  <TwitterIconLink />
+                </div>
               </CustomCardActions>
             </Card>
           </Grid>
