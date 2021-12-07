@@ -16,7 +16,7 @@ const ExpandMoreIconButton: React.FunctionComponent<ExpandMoreIconButtonProps> =
     const { color = 'inherit', open = false, ...otherProps } = props;
 
     return (
-      <CustomIconButton color={color} {...otherProps}>
+      <CustomIconButton aria-label="Expand More" color={color} {...otherProps}>
         <ExpandMoreIcon
           color="inherit"
           fontSize="inherit"
