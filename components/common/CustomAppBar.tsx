@@ -97,6 +97,7 @@ const CustomAppBar: React.FunctionComponent<CustomAppBarProps> = (props) => {
                   key={navLink.label + index}
                   style={{ transformOrigin: 'center left' }}
                   {...(dropdownState ? { timeout: index * 300 } : {})}
+                  unmountOnExit
                 >
                   <ListItemButton
                     onClick={() => handleDropdownItemClick(navLink.href)}
