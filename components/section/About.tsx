@@ -88,7 +88,7 @@ const About: React.FunctionComponent<AboutProps> = (props) => {
   React.useEffect(() => {
     if (!showMore && isUpMd) setShowMore(true);
     if (showMore && !isUpMd) setShowMore(false);
-  }, [isUpMd]);
+  }, [isUpMd, showMore]);
 
   return (
     <CustomContainer id="about">
