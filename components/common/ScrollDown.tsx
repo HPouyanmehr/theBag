@@ -1,13 +1,16 @@
 // react
 import * as React from 'react';
 // @mui
-import { Box, BoxProps, styled, useTheme } from '@mui/material';
+import { Box, BoxProps, styled } from '@mui/material';
 // custom icon
 import ArrowDownIcon from 'components/icon/ArrowDown';
 // style
 import styles from 'styles/components/ScrollDown.module.css';
 // type
-interface ScrollDownProps extends BoxProps {}
+import { Property } from 'csstype';
+interface ScrollDownProps extends BoxProps {
+  color?: Property.Color;
+}
 
 const AnimationContainer = styled(Box)<BoxProps>(({ theme }) => ({
   alignItems: 'center',
@@ -16,13 +19,14 @@ const AnimationContainer = styled(Box)<BoxProps>(({ theme }) => ({
 }));
 
 const ScrollDown: React.FunctionComponent<ScrollDownProps> = (props) => {
-  const { palette } = useTheme();
+  const { color = 'inherit', ...otherProps } = props;
 
   return (
-    <AnimationContainer {...props}>
+    <AnimationContainer {...otherProps}>
       <div className={styles.scrollDown}>
         <ArrowDownIcon
-          stroke={palette.primary.main}
+          aria-label="Arrow down icon"
+          stroke={color}
           strokeWidth="0.3rem"
           fontSize="large"
         />
