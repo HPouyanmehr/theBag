@@ -7,8 +7,8 @@ import { Box, BoxProps, Typography, styled } from '@mui/material';
 // custom component
 import CustomSwiper from 'components/common/CustomSwiper';
 import ProjectCard from 'components/common/ProjectCard';
-// fake data
-import projectsData from 'constants/projectsData';
+// custom context
+import ConstantsContext from 'context/constantsContext';
 // utility
 import calcArrayOfObj from 'utility/calcArrayOfObj';
 // type
@@ -25,6 +25,7 @@ const RecentProjects: React.FunctionComponent<RecentProjectsProps> = (
   props
 ) => {
   const [activeIndex, setActiveIndex] = React.useState<number>();
+  const { projects } = React.useContext(ConstantsContext);
 
   return (
     <CustomWrapper>
@@ -42,27 +43,35 @@ const RecentProjects: React.FunctionComponent<RecentProjectsProps> = (
         onSwiper={(swiper) => setActiveIndex(swiper.activeIndex)}
         onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
       >
-        {projectsData.map((project, index) => (
-          <SwiperSlide
-            key={project.id + index}
-            style={{
-              transform: index === activeIndex ? 'scale(1)' : 'scale(0.75)',
-              transition: '0.2s all ease-in-out',
-            }}
-          >
-            <ProjectCard
-              imageAlt={project.images[0].alt}
-              imageSrc={project.images[0].src}
-              title={project.title}
-              likes={calcArrayOfObj(project.images, 'likes')}
-              sx={{
-                maxWidth: '21rem',
-                marginLeft: 'auto',
-                marginRight: 'auto',
+        {projects ? (
+          projects.map((project, index) => (
+            <SwiperSlide
+              key={project.id + index}
+              style={{
+                transform: index === activeIndex ? 'scale(1)' : 'scale(0.75)',
+                transition: '0.2s all ease-in-out',
               }}
-            />
+            >
+              <ProjectCard
+                imageAlt={project.images[0].alt}
+                imageSrc={project.images[0].src}
+                title={project.title}
+                likes={calcArrayOfObj(project.images, 'likes')}
+                sx={{
+                  maxWidth: '21rem',
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
+                }}
+              />
+            </SwiperSlide>
+          ))
+        ) : (
+          <SwiperSlide>
+            <p style={{ textAlign: 'center' }}>
+              Currently, there is no project available to show.
+            </p>
           </SwiperSlide>
-        ))}
+        )}
       </CustomSwiper>
     </CustomWrapper>
   );
