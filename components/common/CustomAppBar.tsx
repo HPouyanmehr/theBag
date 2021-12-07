@@ -69,6 +69,7 @@ const CustomAppBar: React.FunctionComponent<CustomAppBarProps> = (props) => {
               <MenuToggler
                 color="info"
                 onClick={() => setOpenDropdown(!openDropdown)}
+                open={openDropdown}
                 sx={{ display: { sm: 'none' } }}
               />
             </LinkContainer>
