@@ -16,6 +16,8 @@ import TextLink from 'components/common/TextLink';
 import FacebookIconLink from 'components/common/FacebookIconLink';
 import InstagramIconLink from 'components/common/InstagramIconLink';
 import TwitterIconLink from 'components/common/TwitterIconLink';
+// custom context
+import ConstantsContext from 'context/constantsContext';
 // type
 interface FooterProps {}
 
@@ -50,20 +52,16 @@ const CustomCardContent = styled(CardContent)<CardContentProps>(
 );
 
 const Footer: React.FunctionComponent<FooterProps> = (props) => {
-  const navigationLinks = [
-    { title: 'About', href: '/' },
-    { title: 'Skills', href: '/' },
-    { title: 'Certificates', href: '/' },
-    { title: 'Gallery', href: '/' },
-  ];
+  const { navLinks } = React.useContext(ConstantsContext);
+  navLinks?.sort((a, b) => (a.order > b.order ? 1 : -1));
 
   return (
     <>
       <CustomCard>
         <CustomCardContent>
-          {navigationLinks.map((navigation, index) => (
-            <TextLink key={navigation.title + index} href={navigation.href}>
-              {navigation.title}
+          {navLinks!.map((navLink, index) => (
+            <TextLink key={navLink.label + index} href={navLink.href}>
+              {navLink.label}
             </TextLink>
           ))}
         </CustomCardContent>
