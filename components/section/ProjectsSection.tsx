@@ -9,6 +9,7 @@ import TypingEffect from 'components/common/TypingEffect';
 import ConstantsContext from 'context/constantsContext';
 import ProjectCard from 'components/common/ProjectCard';
 import calcArrayOfObj from 'utility/calcArrayOfObj';
+import Filter, { FilterOption } from 'components/common/Filter';
 // type
 interface ProjectsSectionProps {}
 
@@ -16,6 +17,16 @@ const ProjectsSection: React.FunctionComponent<ProjectsSectionProps> = (
   props
 ) => {
   const { projects } = React.useContext(ConstantsContext);
+  const [projectsToRender, setProjectsToRender] = React.useState(projects);
+
+  const options = [
+    { label: 'Most Recent', active: true },
+    { label: 'Most Popular' },
+    { label: 'Photography' },
+    { label: 'Design' },
+  ];
+
+  const handleFilterOptionClick = (option: FilterOption) => {};
 
   return (
     <>
@@ -33,17 +44,20 @@ const ProjectsSection: React.FunctionComponent<ProjectsSectionProps> = (
       >
         <TypingEffect staticText="as a" text={['photographer', 'designer']} />
       </Box>
+      <Filter onOptionClick={handleFilterOptionClick} options={options} />
       <ContainerGrid
-        justifyContent={projects?.length === 1 ? 'center' : 'flex-start'}
+        justifyContent={
+          projectsToRender?.length === 1 ? 'center' : 'flex-start'
+        }
         sx={{
           padding: {
-            xs: '1rem',
-            sm: '2rem',
+            xs: '0 1rem',
+            sm: '0 2rem',
           },
         }}
       >
-        {projects
-          ? projects.map((project, index) => (
+        {projectsToRender
+          ? projectsToRender.map((project, index) => (
               <Grid
                 item
                 key={project.title + index}
