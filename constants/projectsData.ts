@@ -1,3 +1,5 @@
+// dayjs
+import dayjs, { Dayjs } from 'dayjs';
 // type
 export interface ProjectImage {
   alt: string;
@@ -8,7 +10,7 @@ export interface ProjectImage {
 }
 
 export interface ProjectDetails {
-  date: Date;
+  date: Dayjs;
   id: string;
   images: ProjectImage[];
   title: string;
@@ -16,7 +18,7 @@ export interface ProjectDetails {
 
 const projectsData: ProjectDetails[] = [
   {
-    date: new Date(2021, 12, 4),
+    date: dayjs().subtract(1, 'week'),
     id: 'BridePhotoshoot-1',
     title: 'Bride photoshoot',
     images: [
@@ -72,7 +74,7 @@ const projectsData: ProjectDetails[] = [
     ],
   },
   {
-    date: new Date(2021, 10, 12),
+    date: dayjs().subtract(4, 'week'),
     id: 'HairMaskBoxDesign-1',
     title: 'Hair mask box design',
     images: [
@@ -93,7 +95,7 @@ const projectsData: ProjectDetails[] = [
     ],
   },
   {
-    date: new Date(2021, 4, 14),
+    date: dayjs().subtract(19, 'week'),
     id: 'ClothingPhotoshoot-1',
     title: 'Clothing photoshot',
     images: [
@@ -135,7 +137,7 @@ const projectsData: ProjectDetails[] = [
     ],
   },
   {
-    date: new Date(2021, 1, 21),
+    date: dayjs().subtract(24, 'week'),
     id: 'ModelingPhotoshoot-1',
     title: 'Modeling photoshoot',
     images: [
@@ -170,7 +172,7 @@ const projectsData: ProjectDetails[] = [
     ],
   },
   {
-    date: new Date(2020, 11, 17),
+    date: dayjs().subtract(8, 'month'),
     id: 'DesigningWaterBox-1',
     title: 'Box water is better',
     images: [
