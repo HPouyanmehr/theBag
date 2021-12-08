@@ -16,8 +16,30 @@ export interface ProjectDetails {
   title: string;
 }
 
-const projectsData: ProjectDetails[] = [
-  {
+export interface Project extends ProjectDetails {
+  likes: number;
+}
+
+const ProjectConstructor = (props: ProjectDetails): Project => {
+  const { images, id, date, title } = props;
+
+  return {
+    date,
+    id,
+    title,
+    images,
+    get likes() {
+      let totalLikes = 0;
+      if (this.images.length === 0) return 0;
+
+      this.images.forEach((image) => (totalLikes += image.likes));
+      return totalLikes;
+    },
+  };
+};
+
+const projectsData: Project[] = [
+  ProjectConstructor({
     date: dayjs().subtract(1, 'week'),
     id: 'BridePhotoshoot-1',
     title: 'Bride photoshoot',
@@ -72,8 +94,8 @@ const projectsData: ProjectDetails[] = [
         src: '/projects/bride/joeyy-lee-y56-YywiKUA-unsplash.jpg',
       },
     ],
-  },
-  {
+  }),
+  ProjectConstructor({
     date: dayjs().subtract(4, 'week'),
     id: 'HairMaskBoxDesign-1',
     title: 'Hair mask box design',
@@ -93,8 +115,8 @@ const projectsData: ProjectDetails[] = [
         width: 5193,
       },
     ],
-  },
-  {
+  }),
+  ProjectConstructor({
     date: dayjs().subtract(19, 'week'),
     id: 'ClothingPhotoshoot-1',
     title: 'Clothing photoshot',
@@ -135,8 +157,8 @@ const projectsData: ProjectDetails[] = [
         width: 4000,
       },
     ],
-  },
-  {
+  }),
+  ProjectConstructor({
     date: dayjs().subtract(24, 'week'),
     id: 'ModelingPhotoshoot-1',
     title: 'Modeling photoshoot',
@@ -170,8 +192,8 @@ const projectsData: ProjectDetails[] = [
         width: 4000,
       },
     ],
-  },
-  {
+  }),
+  ProjectConstructor({
     date: dayjs().subtract(8, 'month'),
     id: 'DesigningWaterBox-1',
     title: 'Box water is better',
@@ -205,7 +227,7 @@ const projectsData: ProjectDetails[] = [
         width: 3000,
       },
     ],
-  },
+  }),
 ];
 
 export default projectsData;
