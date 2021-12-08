@@ -9,6 +9,7 @@ import {
   Box,
   BoxProps,
   Container,
+  Divider,
   Grow,
   List,
   ListItemButton,
@@ -16,6 +17,7 @@ import {
   ListItemText,
   styled,
   Toolbar,
+  useTheme,
 } from '@mui/material';
 // custom component
 import NameLogo from 'components/common/NameLogo';
@@ -23,6 +25,8 @@ import ButtonLink from 'components/common/ButtonLink';
 import MenuToggler from 'components/common/MenuToggler';
 import ConstantsContext from 'context/constantsContext';
 import useOnClickOutside from 'hooks/useOnClickOutside';
+import ComponentsContext from 'context/componentsContext';
+import Projects from 'pages/projects';
 // type
 interface CustomAppBarProps {}
 
@@ -47,6 +51,7 @@ const LinksBox = styled(Box)<BoxProps>(({ theme }) => ({
 
 const CustomAppBar: React.FunctionComponent<CustomAppBarProps> = (props) => {
   const [dropdownState, setDropdownState] = React.useState(false);
+  const { containerMaxWidth = 'lg' } = React.useContext(ComponentsContext);
   const { navLinks } = React.useContext(ConstantsContext);
   navLinks?.sort((a, b) => (a.order > b.order ? 1 : -1));
 
@@ -63,10 +68,15 @@ const CustomAppBar: React.FunctionComponent<CustomAppBarProps> = (props) => {
     router.push(href);
   };
 
+  const {
+    palette: { background },
+    shadows,
+  } = useTheme();
+
   return (
     <>
       <CustomAppBarRoot position="absolute" ref={appBarRef}>
-        <Container>
+        <Container maxWidth={containerMaxWidth}>
           <Toolbar>
             <NameLogo
               bgColor="white"
@@ -94,7 +104,19 @@ const CustomAppBar: React.FunctionComponent<CustomAppBarProps> = (props) => {
               />
             </LinkContainer>
           </Toolbar>
-          <Box>
+        </Container>
+        <Box
+          sx={{
+            backgroundColor: background.default,
+            margin: 0,
+            transition: 'box-shadow 0.3s ease-in-out',
+            boxShadow: dropdownState ? '0px 6px 4px 0px rgba(0,0,0,0.12)' : '',
+            WebkitBoxShadow: dropdownState
+              ? '0px 6px 4px 0px rgba(0,0,0,0.12)'
+              : '',
+          }}
+        >
+          <Container maxWidth={containerMaxWidth}>
             <List component="div">
               {navLinks?.map((navLink, index) => (
                 <Grow
@@ -127,8 +149,8 @@ const CustomAppBar: React.FunctionComponent<CustomAppBarProps> = (props) => {
                 </Grow>
               ))}
             </List>
-          </Box>
-        </Container>
+          </Container>
+        </Box>
       </CustomAppBarRoot>
     </>
   );
