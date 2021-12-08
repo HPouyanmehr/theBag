@@ -12,7 +12,7 @@ const Projects: NextPage = (props) => {
   const { pages } = React.useContext(ConstantsContext);
 
   return (
-    <MainLayout pageData={pages && pages.project}>
+    <MainLayout pageData={pages && pages.projects}>
       <ProjectsSection />
     </MainLayout>
   );
