@@ -60,7 +60,7 @@ const ProjectsSection: React.FunctionComponent<ProjectsSectionProps> = (
   return (
     <>
       <Typography
-        component="h1"
+        component="h2"
         variant="h3"
         textAlign="center"
         marginTop="20%"
