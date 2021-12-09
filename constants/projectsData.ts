@@ -1,6 +1,7 @@
 // dayjs
 import dayjs, { Dayjs } from 'dayjs';
 // type
+export type ProjectCategory = 'photography' | 'design';
 export interface ProjectImage {
   alt: string;
   height: number;
@@ -10,6 +11,7 @@ export interface ProjectImage {
 }
 
 export interface ProjectDetails {
+  category: ProjectCategory[];
   date: Dayjs;
   id: string;
   images: ProjectImage[];
@@ -21,9 +23,10 @@ export interface Project extends ProjectDetails {
 }
 
 const ProjectConstructor = (props: ProjectDetails): Project => {
-  const { images, id, date, title } = props;
+  const { category, date, id, images, title } = props;
 
   return {
+    category,
     date,
     id,
     title,
@@ -40,6 +43,7 @@ const ProjectConstructor = (props: ProjectDetails): Project => {
 
 const projectsData: Project[] = [
   ProjectConstructor({
+    category: ['photography'],
     date: dayjs().subtract(1, 'week'),
     id: 'BridePhotoshoot-1',
     title: 'Bride photoshoot',
@@ -96,6 +100,7 @@ const projectsData: Project[] = [
     ],
   }),
   ProjectConstructor({
+    category: ['design'],
     date: dayjs().subtract(4, 'week'),
     id: 'HairMaskBoxDesign-1',
     title: 'Hair mask box design',
@@ -117,6 +122,7 @@ const projectsData: Project[] = [
     ],
   }),
   ProjectConstructor({
+    category: ['photography'],
     date: dayjs().subtract(19, 'week'),
     id: 'ClothingPhotoshoot-1',
     title: 'Clothing photoshot',
@@ -159,6 +165,7 @@ const projectsData: Project[] = [
     ],
   }),
   ProjectConstructor({
+    category: ['photography'],
     date: dayjs().subtract(24, 'week'),
     id: 'ModelingPhotoshoot-1',
     title: 'Modeling photoshoot',
@@ -194,6 +201,7 @@ const projectsData: Project[] = [
     ],
   }),
   ProjectConstructor({
+    category: ['design'],
     date: dayjs().subtract(8, 'month'),
     id: 'DesigningWaterBox-1',
     title: 'Box water is better',
