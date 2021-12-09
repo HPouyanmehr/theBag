@@ -1,7 +1,7 @@
 // react
 import * as React from 'react';
 // @mui
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Grid, Grow, Typography } from '@mui/material';
 // custom component
 import ContainerGrid from 'components/common/ContainerGrid';
 import TypingEffect from 'components/common/TypingEffect';
@@ -10,6 +10,7 @@ import ConstantsContext from 'context/constantsContext';
 import ProjectCard from 'components/common/ProjectCard';
 import calcArrayOfObj from 'utility/calcArrayOfObj';
 import Filter, { FilterOption } from 'components/common/Filter';
+import sortArrayOfObj from 'utility/sortArrayOfObj';
 // type
 interface ProjectsSectionProps {}
 
@@ -26,7 +27,22 @@ const ProjectsSection: React.FunctionComponent<ProjectsSectionProps> = (
     { label: 'Design' },
   ];
 
-  const handleFilterOptionClick = (option: FilterOption) => {};
+  const handleFilterOptionClick = (option: FilterOption) => {
+    if (projectsToRender) {
+      const newProjectsArray = Object.assign([], projectsToRender);
+
+      switch (option.label) {
+        case 'Most Recent':
+          sortArrayOfObj(newProjectsArray, 'date', 'desc');
+          setProjectsToRender(newProjectsArray);
+          break;
+        case 'Most Popular':
+          sortArrayOfObj(newProjectsArray, 'likes', 'desc');
+          setProjectsToRender(newProjectsArray);
+          break;
+      }
+    }
+  };
 
   return (
     <>
@@ -58,26 +74,25 @@ const ProjectsSection: React.FunctionComponent<ProjectsSectionProps> = (
       >
         {projectsToRender
           ? projectsToRender.map((project, index) => (
-              <Grid
-                item
+              <Grow
+                in={true}
                 key={project.title + index}
-                xs={12}
-                sm={6}
-                md={4}
-                xl={3}
+                timeout={(index + 1) * 500}
               >
-                <ProjectCard
-                  imageAlt={project.images[0].alt}
-                  imageSrc={project.images[0].src}
-                  title={project.title}
-                  likes={calcArrayOfObj(project.images, 'likes')}
-                  sx={{
-                    maxWidth: '21rem',
-                    marginLeft: 'auto',
-                    marginRight: 'auto',
-                  }}
-                />
-              </Grid>
+                <Grid item xs={12} sm={6} md={4} xl={3}>
+                  <ProjectCard
+                    imageAlt={project.images[0].alt}
+                    imageSrc={project.images[0].src}
+                    title={project.title}
+                    likes={calcArrayOfObj(project.images, 'likes')}
+                    sx={{
+                      maxWidth: '21rem',
+                      marginLeft: 'auto',
+                      marginRight: 'auto',
+                    }}
+                  />
+                </Grid>
+              </Grow>
             ))
           : 'no project'}
       </ContainerGrid>
