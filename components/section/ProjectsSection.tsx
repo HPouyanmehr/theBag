@@ -11,6 +11,7 @@ import ProjectCard from 'components/common/ProjectCard';
 import calcArrayOfObj from 'utility/calcArrayOfObj';
 import Filter, { FilterOption } from 'components/common/Filter';
 import sortArrayOfObj from 'utility/sortArrayOfObj';
+import { Project } from 'constants/projectsData';
 // type
 interface ProjectsSectionProps {}
 
@@ -29,7 +30,7 @@ const ProjectsSection: React.FunctionComponent<ProjectsSectionProps> = (
 
   const handleFilterOptionClick = (option: FilterOption) => {
     if (projectsToRender) {
-      const newProjectsArray = Object.assign([], projectsToRender);
+      const newProjectsArray: Project[] = Object.assign([], projects);
 
       switch (option.label) {
         case 'Most Recent':
@@ -39,6 +40,18 @@ const ProjectsSection: React.FunctionComponent<ProjectsSectionProps> = (
         case 'Most Popular':
           sortArrayOfObj(newProjectsArray, 'likes', 'desc');
           setProjectsToRender(newProjectsArray);
+          break;
+        case 'Photography':
+          const photographyProjects = newProjectsArray.filter((project) =>
+            project.category.includes('photography')
+          );
+          setProjectsToRender(photographyProjects);
+          break;
+        case 'Design':
+          const designProjects = newProjectsArray.filter((project) =>
+            project.category.includes('design')
+          );
+          setProjectsToRender(designProjects);
           break;
       }
     }
