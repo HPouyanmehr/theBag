@@ -1,5 +1,7 @@
 // react
 import * as React from 'react';
+// formik
+import { Formik } from 'formik';
 // @mui
 import {
   Card,
@@ -33,60 +35,91 @@ const ContactForm: React.FunctionComponent<ContactFormProps> = (props) => {
           </Typography>
         }
       />
-      <CardContent
-        sx={{
-          paddingBottom: 0,
-          padding: 0,
-          margin: '1rem',
-        }}
+
+      <Formik
+        initialValues={{ name: '', email: '', subject: '', message: '' }}
+        onSubmit={(values) => console.log(values)}
       >
-        <form>
-          <CustomTextField
-            fullWidth
-            label={toCapitalize('name')}
-            name="name"
-            sx={{ marginBottom: '1rem' }}
-            type="text"
-            variant="outlined"
-          />
-          <CustomTextField
-            fullWidth
-            label={toCapitalize('email')}
-            name="email"
-            required
-            sx={{ marginBottom: '1rem' }}
-            type="email"
-            variant="outlined"
-          />
-          <CustomTextField
-            fullWidth
-            label={toCapitalize('subject')}
-            name="subject"
-            sx={{ marginBottom: '1rem' }}
-            type="text"
-            variant="outlined"
-          />
-          <CustomTextField
-            fullWidth
-            label={toCapitalize('message')}
-            maxRows={6}
-            minRows={4}
-            multiline
-            name="message"
-            required
-            type="text"
-            variant="outlined"
-          />
-        </form>
-      </CardContent>
-      <CardActions
-        sx={{ justifyContent: 'flex-end', margin: '1rem', padding: 0 }}
-      >
-        <CustomButton type="reset">Reset</CustomButton>
-        <CustomButton type="submit" variant="contained">
-          Submit
-        </CustomButton>
-      </CardActions>
+        {({ values, handleChange, handleBlur, handleSubmit, handleReset }) => (
+          <>
+            <CardContent
+              sx={{
+                paddingBottom: 0,
+                padding: 0,
+                margin: '1rem',
+              }}
+            >
+              <form onReset={handleReset} onSubmit={handleSubmit} noValidate>
+                <CustomTextField
+                  fullWidth
+                  label={toCapitalize('name')}
+                  name="name"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  sx={{ marginBottom: '1rem' }}
+                  type="text"
+                  value={values.name}
+                  variant="outlined"
+                />
+                <CustomTextField
+                  fullWidth
+                  label={toCapitalize('email')}
+                  name="email"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  required
+                  sx={{ marginBottom: '1rem' }}
+                  type="email"
+                  value={values.email}
+                  variant="outlined"
+                />
+                <CustomTextField
+                  fullWidth
+                  label={toCapitalize('subject')}
+                  name="subject"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  sx={{ marginBottom: '1rem' }}
+                  type="text"
+                  value={values.subject}
+                  variant="outlined"
+                />
+                <CustomTextField
+                  fullWidth
+                  label={toCapitalize('message')}
+                  maxRows={6}
+                  minRows={4}
+                  multiline
+                  name="message"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  required
+                  type="text"
+                  value={values.message}
+                  variant="outlined"
+                />
+              </form>
+            </CardContent>
+            <CardActions
+              sx={{ justifyContent: 'flex-end', margin: '1rem', padding: 0 }}
+            >
+              <CustomButton onClick={() => handleReset()} type="reset">
+                Reset
+              </CustomButton>
+              <CustomButton
+                onClick={() => {
+                  handleSubmit();
+                  handleReset();
+                }}
+                type="submit"
+                variant="contained"
+              >
+                Submit
+              </CustomButton>
+            </CardActions>
+          </>
+        )}
+      </Formik>
     </Card>
   );
 };
