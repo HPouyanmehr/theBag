@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 const Image = dynamic(() => import('next/image'));
 // @mui
 import { Grid, GridProps, Skeleton, Typography, styled } from '@mui/material';
+import ButtonLink from 'components/common/ButtonLink';
 // custom component
 const CustomButton = dynamic(() => import('components/common/CustomButton'));
 const ContainerGrid = dynamic(() => import('components/common/ContainerGrid'));
@@ -36,17 +37,15 @@ const HireMe: React.FunctionComponent<HireMeProps> = (props) => {
           <Typography component="h2" variant="h4" textAlign="center">
             I am available as freelancer.
           </Typography>
-          <CustomButton
-            disableRipple
+          <ButtonLink
             color="info"
-            variant="contained"
+            href="/hire-me"
             size="large"
-            sx={{
-              marginTop: '2rem',
-            }}
+            sx={{ marginTop: '2rem' }}
+            variant="contained"
           >
             Hire me
-          </CustomButton>
+          </ButtonLink>
         </CustomGridItem>
         <CustomGridItem
           item
