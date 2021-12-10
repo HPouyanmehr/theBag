@@ -10,7 +10,7 @@ const CustomTextFieldRoot = styled(TextField)<TextFieldProps>(({ theme }) => ({
       borderBottom: '1px solid',
       borderBottomColor: theme.palette.text.disabled,
     },
-    '&:hover::before': {
+    '&:hover:not(.Mui-disabled)::before': {
       borderBottom: '2px solid',
       borderBottomColor: theme.palette.text.secondary,
     },
