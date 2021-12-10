@@ -7,18 +7,20 @@ import CustomAnchor from 'components/common/CustomAnchor';
 // type
 interface TextLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {}
 
+const CustomAnchorWithRef = React.forwardRef<TextLinkProps, TextLinkProps>(
+  ({ children, href, onClick, ...otherProps }, ref) => {
+    return (
+      <CustomAnchor href={href} onClick={onClick} {...otherProps}>
+        {children}
+      </CustomAnchor>
+    );
+  }
+);
+
+CustomAnchorWithRef.displayName = 'CustomAnchorWithRef';
+
 const TextLink: React.FunctionComponent<TextLinkProps> = (props) => {
   const { children, href = '/', ...otherProps } = props;
-
-  const CustomAnchorWithRef = React.forwardRef<TextLinkProps, TextLinkProps>(
-    ({ children, href, onClick, ...otherProps }, ref) => {
-      return (
-        <CustomAnchor href={href} onClick={onClick} {...otherProps}>
-          {children}
-        </CustomAnchor>
-      );
-    }
-  );
 
   return (
     <Link href={href} passHref>
