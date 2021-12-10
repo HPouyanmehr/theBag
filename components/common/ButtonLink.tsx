@@ -6,19 +6,24 @@ import Link from 'next/link';
 import CustomButton from 'components/common/CustomButton';
 // type
 import { ButtonProps } from '@mui/material';
-import { Property } from 'csstype';
 interface ButtonLinkProps extends ButtonProps {
   href?: string;
-  margin?: Property.Margin;
 }
 
+const CustomButtonWithRef = React.forwardRef<ButtonLinkProps, ButtonLinkProps>(
+  ({ children, ...otherProps }, ref) => (
+    <CustomButton {...otherProps}>{children}</CustomButton>
+  )
+);
+
+CustomButtonWithRef.displayName = 'CustomButtonWithRef';
+
 const ButtonLink: React.FunctionComponent<ButtonLinkProps> = (props) => {
-  const { children, href = '#', margin, ...otherProps } = props;
+  const { children, href = '#', ref, ...otherProps } = props;
+
   return (
-    <Link href={href}>
-      <a style={{ color: 'inherit', margin, textDecoration: 'none' }}>
-        <CustomButton {...otherProps}>{children}</CustomButton>
-      </a>
+    <Link href={href} passHref>
+      <CustomButtonWithRef {...otherProps}>{children}</CustomButtonWithRef>
     </Link>
   );
 };
