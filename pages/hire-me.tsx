@@ -2,18 +2,21 @@
 import * as React from 'react';
 // custom component
 import MainLayout from 'components/layout/MainLayout';
-import ProjectsSection from 'components/section/ProjectsSection';
+import CenterBox from 'components/common/CenterBox';
 // custom context
 import ConstantsContext from 'context/constantsContext';
 // type
 import type { NextPage } from 'next';
+import ContactForm from 'components/common/ContactForm';
 
 const HireMe: NextPage = (props) => {
   const { pages } = React.useContext(ConstantsContext);
 
   return (
     <MainLayout>
-      <p>hire me</p>
+      <CenterBox>
+        <ContactForm />
+      </CenterBox>
     </MainLayout>
   );
 };
