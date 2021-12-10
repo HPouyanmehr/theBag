@@ -17,10 +17,10 @@ const CustomIconButtonRoot = styled(IconButton)<IconButtonProps>(
 const CustomIconButton: React.FunctionComponent<CustomIconButtonProps> = (
   props
 ) => {
-  const { children, disableRipple, ...otherProps } = props;
+  const { children, color = 'inherit', disableRipple, ...otherProps } = props;
 
   return (
-    <CustomIconButtonRoot disableRipple {...otherProps}>
+    <CustomIconButtonRoot color={color} disableRipple {...otherProps}>
       {children}
     </CustomIconButtonRoot>
   );

@@ -1,16 +1,24 @@
 // react
 import * as React from 'react';
-// next
-import Link from 'next/link';
 // @mui icon
 import TwitterIcon from '@mui/icons-material/Twitter';
 // custom component
-import CustomIconButton from 'components/common/CustomIconButton';
+import IconButtonLink from 'components/common/IconButtonLink';
 // type
 import { IconButtonProps } from '@mui/material';
 interface TwitterIconLinkProps extends IconButtonProps {
   anchorStyles?: React.CSSProperties;
   href?: string;
+  iconColor?:
+    | 'inherit'
+    | 'action'
+    | 'disabled'
+    | 'primary'
+    | 'secondary'
+    | 'error'
+    | 'info'
+    | 'success'
+    | 'warning';
   iconSize?: 'inherit' | 'large' | 'medium' | 'small' | undefined;
 }
 
@@ -19,22 +27,16 @@ const TwitterIconLink: React.FunctionComponent<TwitterIconLinkProps> = (
 ) => {
   const {
     anchorStyles,
-    color = 'inherit',
     href = '#',
+    iconColor = 'inherit',
     iconSize = 'inherit',
     ...otherProps
   } = props;
 
   return (
-    <Link href={href} passHref>
-      <CustomIconButton
-        aria-label="Facebook button"
-        color={color}
-        {...otherProps}
-      >
-        <TwitterIcon fontSize={iconSize} />
-      </CustomIconButton>
-    </Link>
+    <IconButtonLink aria-label="Twitter button" href={href} {...otherProps}>
+      <TwitterIcon color={iconColor} fontSize={iconSize} />
+    </IconButtonLink>
   );
 };
 
