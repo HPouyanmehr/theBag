@@ -13,7 +13,7 @@ const HireMe: NextPage = (props) => {
   const { pages } = React.useContext(ConstantsContext);
 
   return (
-    <MainLayout>
+    <MainLayout pageData={pages && pages.hireMe}>
       <CenterBox>
         <ContactForm />
       </CenterBox>
