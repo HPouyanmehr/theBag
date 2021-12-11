@@ -13,6 +13,8 @@ import {
 // custom component
 import CustomTextField from 'components/common/CustomTextField';
 import CustomButton from 'components/common/CustomButton';
+// validation
+import { ContactFormSchema } from 'models/contactFormModel';
 // type
 interface ContactFormProps {}
 
@@ -39,8 +41,17 @@ const ContactForm: React.FunctionComponent<ContactFormProps> = (props) => {
       <Formik
         initialValues={{ name: '', email: '', subject: '', message: '' }}
         onSubmit={(values) => console.log(values)}
+        validationSchema={ContactFormSchema}
       >
-        {({ values, handleChange, handleBlur, handleSubmit, handleReset }) => (
+        {({
+          errors,
+          touched,
+          values,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          handleReset,
+        }) => (
           <>
             <CardContent
               sx={{
@@ -51,7 +62,9 @@ const ContactForm: React.FunctionComponent<ContactFormProps> = (props) => {
             >
               <form onReset={handleReset} onSubmit={handleSubmit} noValidate>
                 <CustomTextField
+                  error={touched.name && errors.name ? true : false}
                   fullWidth
+                  helperText={touched.name && errors.name && errors.name}
                   label={toCapitalize('name')}
                   name="name"
                   onBlur={handleBlur}
@@ -62,7 +75,9 @@ const ContactForm: React.FunctionComponent<ContactFormProps> = (props) => {
                   variant="outlined"
                 />
                 <CustomTextField
+                  error={touched.email && errors.email ? true : false}
                   fullWidth
+                  helperText={touched.email && errors.email && errors.email}
                   label={toCapitalize('email')}
                   name="email"
                   onBlur={handleBlur}
@@ -74,7 +89,11 @@ const ContactForm: React.FunctionComponent<ContactFormProps> = (props) => {
                   variant="outlined"
                 />
                 <CustomTextField
+                  error={touched.subject && errors.subject ? true : false}
                   fullWidth
+                  helperText={
+                    touched.subject && errors.subject && errors.subject
+                  }
                   label={toCapitalize('subject')}
                   name="subject"
                   onBlur={handleBlur}
@@ -85,7 +104,11 @@ const ContactForm: React.FunctionComponent<ContactFormProps> = (props) => {
                   variant="outlined"
                 />
                 <CustomTextField
+                  error={touched.message && errors.message ? true : false}
                   fullWidth
+                  helperText={
+                    touched.message && errors.message && errors.message
+                  }
                   label={toCapitalize('message')}
                   maxRows={6}
                   minRows={4}
@@ -108,8 +131,12 @@ const ContactForm: React.FunctionComponent<ContactFormProps> = (props) => {
               </CustomButton>
               <CustomButton
                 onClick={() => {
+                  let resetForm = true;
                   handleSubmit();
-                  handleReset();
+                  for (let item in errors) {
+                    if (item) resetForm = false;
+                  }
+                  if (resetForm) handleReset();
                 }}
                 type="submit"
                 variant="contained"
