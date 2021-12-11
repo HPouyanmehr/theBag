@@ -1,5 +1,7 @@
 // react
 import * as React from 'react';
+// next
+import { useRouter } from 'next/router';
 // swiper
 import { SwiperSlide } from 'swiper/react';
 // @mui
@@ -26,6 +28,7 @@ const RecentProjects: React.FunctionComponent<RecentProjectsProps> = (
 ) => {
   const [activeIndex, setActiveIndex] = React.useState<number>();
   const { projects } = React.useContext(ConstantsContext);
+  const router = useRouter();
 
   return (
     <CustomWrapper>
@@ -57,6 +60,7 @@ const RecentProjects: React.FunctionComponent<RecentProjectsProps> = (
                 imageSrc={project.images[0].src}
                 title={project.title}
                 likes={calcArrayOfObj(project.images, 'likes')}
+                onButtonClick={() => router.push(`/projects/${project.id}`)}
                 sx={{
                   maxWidth: '21rem',
                   marginLeft: 'auto',
