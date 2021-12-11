@@ -32,6 +32,7 @@ interface ProjectCardProps extends CardProps {
   imageSrc: string;
   title: string;
   likes: number;
+  onButtonClick?: () => void;
 }
 
 const CustomCard = styled(Card)<CardProps>(({ theme }) => ({
@@ -54,7 +55,8 @@ const ImageContainer = styled(Box)<BoxProps>(({ theme }) => ({
 }));
 
 const ProjectCard: React.FunctionComponent<ProjectCardProps> = (props) => {
-  const { imageAlt, imageSrc, likes, title, ...otherProps } = props;
+  const { imageAlt, imageSrc, likes, title, onButtonClick, ...otherProps } =
+    props;
   const [isLoaded, setIsLoaded] = React.useState(false);
   const {
     palette: { primary },
@@ -111,6 +113,7 @@ const ProjectCard: React.FunctionComponent<ProjectCardProps> = (props) => {
           disableRipple
           variant="text"
           color="inherit"
+          onClick={onButtonClick}
           sx={{ marginLeft: 'auto' }}
           endIcon={<ChevronRightIcon />}
         >
