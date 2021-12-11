@@ -26,11 +26,13 @@ CustomIconButtonWithRef.displayName = 'CustomIconButtonWithRef';
 const IconButtonLink: React.FunctionComponent<IconButtonLinkProps> = (
   props
 ) => {
-  const { children, href = '#' } = props;
+  const { children, href = '#', ref, ...otherProps } = props;
 
   return (
-    <Link href={href} passHref>
-      <CustomIconButtonWithRef>{children}</CustomIconButtonWithRef>
+    <Link href={href}>
+      <CustomIconButtonWithRef {...otherProps}>
+        {children}
+      </CustomIconButtonWithRef>
     </Link>
   );
 };
