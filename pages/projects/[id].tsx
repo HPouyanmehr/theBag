@@ -21,7 +21,7 @@ const Project: NextPage = () => {
     <MainLayout pageData={{ title: 'Project Not Found' }}>
       <CenterBox flexDirection="column">
         <Typography component="h2" variant="h4">
-          Sorry, couldn't find the project.
+          Sorry, couldn&apos;t find the project.
         </Typography>
         <Typography
           color="text.secondary"
