@@ -65,6 +65,7 @@ const ContactForm: React.FunctionComponent<ContactFormProps> = (props) => {
                   error={touched.name && errors.name ? true : false}
                   fullWidth
                   helperText={touched.name && errors.name && errors.name}
+                  id="contact-form-name"
                   label={toCapitalize('name')}
                   name="name"
                   onBlur={handleBlur}
@@ -78,6 +79,7 @@ const ContactForm: React.FunctionComponent<ContactFormProps> = (props) => {
                   error={touched.email && errors.email ? true : false}
                   fullWidth
                   helperText={touched.email && errors.email && errors.email}
+                  id="contact-form-email"
                   label={toCapitalize('email')}
                   name="email"
                   onBlur={handleBlur}
@@ -96,6 +98,7 @@ const ContactForm: React.FunctionComponent<ContactFormProps> = (props) => {
                   }
                   label={toCapitalize('subject')}
                   name="subject"
+                  id="contact-form-subject"
                   onBlur={handleBlur}
                   onChange={handleChange}
                   sx={{ marginBottom: '1rem' }}
@@ -109,6 +112,7 @@ const ContactForm: React.FunctionComponent<ContactFormProps> = (props) => {
                   helperText={
                     touched.message && errors.message && errors.message
                   }
+                  id="contact-form-message"
                   label={toCapitalize('message')}
                   maxRows={6}
                   minRows={4}
