@@ -14,6 +14,7 @@ import type { NextPage } from 'next';
 import ContainerGrid from 'components/common/ContainerGrid';
 import Review from 'components/common/Review';
 import ProjectDetails from 'components/section/ProjectDetails';
+import Gallery from 'components/common/Gallery';
 
 const Project: NextPage = () => {
   const { pages, projects } = React.useContext(ConstantsContext);
@@ -49,12 +50,7 @@ const Project: NextPage = () => {
         <Box margin="2rem" marginTop="5rem">
           <ContainerGrid>
             <Grid item xs={12} md={8}>
-              <Typography component="h2" variant="h4">
-                {project.title}
-              </Typography>
-              <Typography color="text.secondary" component="p" variant="body1">
-                Read time: 10 min
-              </Typography>
+              <Gallery images={project.images} />
             </Grid>
             <Grid item xs>
               <ProjectDetails project={project} />
