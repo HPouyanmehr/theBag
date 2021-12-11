@@ -3,7 +3,7 @@ import * as React from 'react';
 // next
 import { useRouter } from 'next/router';
 // @mui
-import { Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 // custom component
 import MainLayout from 'components/layout/MainLayout';
 import CenterBox from 'components/common/CenterBox';
@@ -11,6 +11,8 @@ import CenterBox from 'components/common/CenterBox';
 import ConstantsContext from 'context/constantsContext';
 // type
 import type { NextPage } from 'next';
+import ContainerGrid from 'components/common/ContainerGrid';
+import Review from 'components/common/Review';
 
 const Project: NextPage = () => {
   const { pages, projects } = React.useContext(ConstantsContext);
@@ -43,7 +45,21 @@ const Project: NextPage = () => {
   return (
     <>
       <MainLayout pageData={{ title: project.title }}>
-        <p>{id}</p>
+        <Box margin="2rem" marginTop="5rem">
+          <ContainerGrid>
+            <Grid item xs={12} md={8}>
+              <Typography component="h2" variant="h4">
+                {project.title}
+              </Typography>
+              <Typography color="text.secondary" component="p" variant="body1">
+                Read time: 10 min
+              </Typography>
+            </Grid>
+            <Grid item xs>
+              <Review />
+            </Grid>
+          </ContainerGrid>
+        </Box>
       </MainLayout>
     </>
   );
