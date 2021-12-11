@@ -1,5 +1,7 @@
 // react
 import * as React from 'react';
+// next
+import { useRouter } from 'next/router';
 // @mui
 import { Box, Grid, Grow, Typography } from '@mui/material';
 // custom component
@@ -20,6 +22,7 @@ const ProjectsSection: React.FunctionComponent<ProjectsSectionProps> = (
 ) => {
   const { projects } = React.useContext(ConstantsContext);
   const [projectsToRender, setProjectsToRender] = React.useState(projects);
+  const router = useRouter();
 
   const options = [
     { label: 'Most Recent', active: true },
@@ -98,6 +101,7 @@ const ProjectsSection: React.FunctionComponent<ProjectsSectionProps> = (
                     imageSrc={project.images[0].src}
                     title={project.title}
                     likes={calcArrayOfObj(project.images, 'likes')}
+                    onButtonClick={() => router.push(`/projects/${project.id}`)}
                     sx={{
                       maxWidth: '21rem',
                       marginLeft: 'auto',
