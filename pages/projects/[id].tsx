@@ -13,6 +13,7 @@ import ConstantsContext from 'context/constantsContext';
 import type { NextPage } from 'next';
 import ContainerGrid from 'components/common/ContainerGrid';
 import Review from 'components/common/Review';
+import ProjectDetails from 'components/section/ProjectDetails';
 
 const Project: NextPage = () => {
   const { pages, projects } = React.useContext(ConstantsContext);
@@ -56,6 +57,7 @@ const Project: NextPage = () => {
               </Typography>
             </Grid>
             <Grid item xs>
+              <ProjectDetails project={project} />
               <Review />
             </Grid>
           </ContainerGrid>
