@@ -24,7 +24,7 @@ const ContactForm: React.FunctionComponent<ContactFormProps> = (props) => {
   };
 
   return (
-    <Card sx={{ maxWidth: '26rem' }}>
+    <Card>
       <CardHeader
         title={
           <Typography color="primary" component="h2" variant="h5">
