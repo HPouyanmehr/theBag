@@ -86,9 +86,9 @@ const About: React.FunctionComponent<AboutProps> = (props) => {
   const isUpMd = useMediaQuery(theme.breakpoints.up('md'));
 
   React.useEffect(() => {
-    if (!showMore && isUpMd) setShowMore(true);
-    if (showMore && !isUpMd) setShowMore(false);
-  }, [isUpMd, showMore]);
+    if (isUpMd) setShowMore(true);
+    else setShowMore(false);
+  }, [isUpMd]);
 
   return (
     <CustomContainer id="about">
