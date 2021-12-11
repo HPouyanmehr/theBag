@@ -29,7 +29,7 @@ const IconButtonLink: React.FunctionComponent<IconButtonLinkProps> = (
   const { children, href = '#', ref, ...otherProps } = props;
 
   return (
-    <Link href={href}>
+    <Link href={href} passHref>
       <CustomIconButtonWithRef {...otherProps}>
         {children}
       </CustomIconButtonWithRef>
