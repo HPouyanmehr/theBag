@@ -1,0 +1,40 @@
+.galleryWrapper {
+  :global(.swiper-wrapper) {
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  :global(.swiper-button-next) {
+    color: white;
+  }
+  :global(.swiper-button-prev) {
+    color: white;
+  }
+  :global(.swiper-button-disabled) {
+    opacity: 0.5;
+  }
+  :global(.swiper-pagination-bullet-active) {
+    background-color: white;
+  }
+}
+
+.thumbsWrapper {
+  :global(.swiper-slide-auto) {
+    border-radius: 4px;
+    cursor: pointer;
+    height: 6rem;
+    overflow: hidden;
+    width: 6rem;
+    img {
+      filter: contrast(0.6);
+      transform: scale(1);
+      transition: all 0.2s ease-in-out;
+    }
+  }
+  :global(.swiper-slide-thumb-active) {
+    img {
+      filter: contrast(1);
+      transform: scale(1.1);
+      transition: all 0.2s ease-in-out;
+    }
+  }
+}
