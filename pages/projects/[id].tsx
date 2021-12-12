@@ -3,9 +3,8 @@ import * as React from 'react';
 // next
 import { useRouter } from 'next/router';
 // @mui
-import { Box, BoxProps, Grid, Typography, styled } from '@mui/material';
+import { Box, BoxProps, Grid, styled } from '@mui/material';
 // custom component
-import CenterBox from 'components/common/CenterBox';
 import ContainerGrid from 'components/common/ContainerGrid';
 import Gallery from 'components/common/Gallery';
 import MainLayout from 'components/layout/MainLayout';
@@ -14,6 +13,7 @@ import ProjectDetails from 'components/section/ProjectDetails';
 import ConstantsContext from 'context/constantsContext';
 // type
 import type { NextPage } from 'next';
+import ProjectNotFound from 'components/section/ProjectNotFound';
 
 const ProjectContainer = styled(Box)<BoxProps>(({ theme }) => ({
   margin: '5rem 1rem 1rem',
@@ -23,25 +23,13 @@ const ProjectContainer = styled(Box)<BoxProps>(({ theme }) => ({
 }));
 
 const Project: NextPage = () => {
-  const { pages, projects } = React.useContext(ConstantsContext);
+  const { projects } = React.useContext(ConstantsContext);
   const router = useRouter();
   const { id } = router.query;
 
   const NotFound = (
     <MainLayout pageData={{ title: 'Project Not Found' }}>
-      <CenterBox flexDirection="column">
-        <Typography component="h2" variant="h4">
-          Sorry, couldn&apos;t find the project.
-        </Typography>
-        <Typography
-          color="text.secondary"
-          component="p"
-          marginTop="1rem"
-          variant="body1"
-        >
-          You can check projects page to see all project.
-        </Typography>
-      </CenterBox>
+      <ProjectNotFound />
     </MainLayout>
   );
 
