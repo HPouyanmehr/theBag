@@ -15,6 +15,7 @@ import ContainerGrid from 'components/common/ContainerGrid';
 import Review from 'components/common/Review';
 import ProjectDetails from 'components/section/ProjectDetails';
 import Gallery from 'components/common/Gallery';
+import CustomContainer from 'components/common/CustomContainer';
 
 const Project: NextPage = () => {
   const { pages, projects } = React.useContext(ConstantsContext);
@@ -47,11 +48,23 @@ const Project: NextPage = () => {
   return (
     <>
       <MainLayout pageData={{ title: project.title }}>
+        <CustomContainer sx={{ marginTop: '5rem' }}>
+          <Typography component="h1" variant="h3" textAlign="center">
+            {project.title}
+          </Typography>
+          <Typography
+            color="text.secondary"
+            component="p"
+            textAlign="center"
+            variant="h6"
+          >
+            14 min read.
+          </Typography>
+          <Gallery images={project.images} />
+        </CustomContainer>
         <Box margin="2rem" marginTop="5rem">
           <ContainerGrid>
-            <Grid item xs={12} md={8}>
-              <Gallery images={project.images} />
-            </Grid>
+            <Grid item xs={12} md={8}></Grid>
             <Grid item xs>
               <ProjectDetails project={project} />
               <Review />
