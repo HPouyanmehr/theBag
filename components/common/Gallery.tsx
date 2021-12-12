@@ -28,14 +28,13 @@ const Gallery: React.FunctionComponent<GalleryProps> = (props) => {
           thumbs={{ swiper: swiperThumbs }}
         >
           {images.map((image, index) => (
-            <SwiperSlide key={image.alt + index}>
+            <SwiperSlide key={image.alt + index} style={{ height: '26rem' }}>
               <Image
                 alt={image.alt}
                 height={image.height}
-                layout="responsive"
+                layout="fill"
                 objectFit="contain"
                 src={image.src}
-                width={image.width}
               />
             </SwiperSlide>
           ))}
