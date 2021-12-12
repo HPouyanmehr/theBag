@@ -33,7 +33,6 @@ const Gallery: React.FunctionComponent<GalleryProps> = (props) => {
             <SwiperSlide key={image.alt + index} style={{ height: '26rem' }}>
               <Image
                 alt={image.alt}
-                height={image.height}
                 layout="fill"
                 objectFit="contain"
                 src={image.src}
