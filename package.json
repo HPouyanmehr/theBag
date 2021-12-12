@@ -15,6 +15,7 @@
     "@fontsource/roboto": "^4.5.1",
     "@mui/icons-material": "^5.2.0",
     "@mui/material": "^5.2.1",
+    "@types/swiper": "^5.4.3",
     "csstype": "^3.0.10",
     "dayjs": "^1.10.7",
     "formik": "^2.2.9",
