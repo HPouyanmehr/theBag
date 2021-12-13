@@ -87,7 +87,7 @@ export const getStaticProps: GetStaticProps = async (
 
   let content;
   try {
-    const md = fs.readFileSync(path.join(`posts\\${filename}`));
+    const md = fs.readFileSync(path.join(process.cwd(), `posts\\${filename}`));
     if (md) {
       const { value } = remark.processSync(md);
       content = value;
