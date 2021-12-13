@@ -1,3 +1,4 @@
+/* eslint react/no-children-prop: 0 */
 // react
 import * as React from 'react';
 // next
