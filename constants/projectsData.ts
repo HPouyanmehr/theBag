@@ -15,6 +15,7 @@ export interface ProjectDetails {
   date: Dayjs;
   id: string;
   images: ProjectImage[];
+  postFileName: string;
   title: string;
 }
 
@@ -23,7 +24,7 @@ export interface Project extends ProjectDetails {
 }
 
 const ProjectConstructor = (props: ProjectDetails): Project => {
-  const { category, date, id, images, title } = props;
+  const { category, date, id, images, postFileName, title } = props;
 
   return {
     category,
@@ -31,6 +32,7 @@ const ProjectConstructor = (props: ProjectDetails): Project => {
     id,
     title,
     images,
+    postFileName,
     get likes() {
       let totalLikes = 0;
       if (this.images.length === 0) return 0;
@@ -45,7 +47,8 @@ const projectsData: Project[] = [
   ProjectConstructor({
     category: ['photography'],
     date: dayjs().subtract(1, 'week'),
-    id: 'BridePhotoshoot-1',
+    id: 'bridephotoshoot',
+    postFileName: 'bridephotoshoot',
     title: 'Bride photoshoot',
     images: [
       {
@@ -102,7 +105,8 @@ const projectsData: Project[] = [
   ProjectConstructor({
     category: ['design'],
     date: dayjs().subtract(4, 'week'),
-    id: 'HairMaskBoxDesign-1',
+    id: 'hairmaskdesign',
+    postFileName: 'hairmaskdesign',
     title: 'Hair mask box design',
     images: [
       {
@@ -124,7 +128,8 @@ const projectsData: Project[] = [
   ProjectConstructor({
     category: ['photography'],
     date: dayjs().subtract(19, 'week'),
-    id: 'ClothingPhotoshoot-1',
+    id: 'clothingphotoshoot',
+    postFileName: 'clothingphotoshoot',
     title: 'Clothing photoshot',
     images: [
       {
@@ -167,7 +172,8 @@ const projectsData: Project[] = [
   ProjectConstructor({
     category: ['photography'],
     date: dayjs().subtract(24, 'week'),
-    id: 'ModelingPhotoshoot-1',
+    id: 'modelingphotoshoot',
+    postFileName: 'modelingphotoshoot',
     title: 'Modeling photoshoot',
     images: [
       {
@@ -203,8 +209,9 @@ const projectsData: Project[] = [
   ProjectConstructor({
     category: ['design'],
     date: dayjs().subtract(8, 'month'),
-    id: 'DesigningWaterBox-1',
+    id: 'designingwaterbox',
     title: 'Box water is better',
+    postFileName: 'Box water is better',
     images: [
       {
         alt: 'Boxed water is Better carton with waves drawn on it with a sharpie',
