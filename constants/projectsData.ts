@@ -106,7 +106,7 @@ const projectsData: Project[] = [
     category: ['design'],
     date: dayjs().subtract(4, 'week'),
     id: 'hairmaskdesign',
-    postFileName: 'hairmaskdesign',
+    postFileName: 'bridephotoshoot',
     title: 'Hair mask box design',
     images: [
       {
@@ -129,7 +129,7 @@ const projectsData: Project[] = [
     category: ['photography'],
     date: dayjs().subtract(19, 'week'),
     id: 'clothingphotoshoot',
-    postFileName: 'clothingphotoshoot',
+    postFileName: 'bridephotoshoot',
     title: 'Clothing photoshot',
     images: [
       {
@@ -173,7 +173,7 @@ const projectsData: Project[] = [
     category: ['photography'],
     date: dayjs().subtract(24, 'week'),
     id: 'modelingphotoshoot',
-    postFileName: 'modelingphotoshoot',
+    postFileName: 'bridephotoshoot',
     title: 'Modeling photoshoot',
     images: [
       {
@@ -211,7 +211,7 @@ const projectsData: Project[] = [
     date: dayjs().subtract(8, 'month'),
     id: 'designingwaterbox',
     title: 'Box water is better',
-    postFileName: 'Box water is better',
+    postFileName: 'bridephotoshoot',
     images: [
       {
         alt: 'Boxed water is Better carton with waves drawn on it with a sharpie',
