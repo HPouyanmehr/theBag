@@ -5,11 +5,12 @@ import { Box, useMediaQuery, useTheme } from '@mui/material';
 // swiper
 import SwiperCore, { Thumbs, Navigation, Scrollbar, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+// custom component
+import ImageWithSkeleton from 'components/common/ImageWithSkeleton';
 // style
 import classes from 'styles/components/Gallery.module.scss';
 // type
 import { ProjectImage } from 'constants/projectsData';
-import Image from 'next/image';
 interface GalleryProps {
   images: ProjectImage[];
 }
@@ -31,7 +32,7 @@ const Gallery: React.FunctionComponent<GalleryProps> = (props) => {
         >
           {images.map((image, index) => (
             <SwiperSlide key={image.alt + index} style={{ height: '26rem' }}>
-              <Image
+              <ImageWithSkeleton
                 alt={image.alt}
                 layout="fill"
                 objectFit="contain"
@@ -51,7 +52,7 @@ const Gallery: React.FunctionComponent<GalleryProps> = (props) => {
         >
           {images.map((image, index) => (
             <SwiperSlide key={image.alt + index} className="swiper-slide-auto">
-              <Image
+              <ImageWithSkeleton
                 alt={image.alt}
                 layout="fill"
                 objectFit="cover"
