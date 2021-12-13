@@ -57,10 +57,14 @@ const ProjectPage: NextPage<ProjectPageProps> = (props) => {
           <ContainerGrid>
             <Grid item xs={12} md={8}>
               <Gallery images={parsedProject.images} />
-              <Markdown content={content} />
             </Grid>
             <Grid item xs>
               <ProjectDetails project={parsedProject} />
+            </Grid>
+          </ContainerGrid>
+          <ContainerGrid>
+            <Grid item xs={12} md={8}>
+              <Markdown content={content} />
             </Grid>
           </ContainerGrid>
         </ProjectContainer>
