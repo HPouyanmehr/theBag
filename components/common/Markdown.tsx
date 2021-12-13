@@ -8,6 +8,8 @@ import MTJMarkdown from 'markdown-to-jsx';
 // @mui
 import {
   Box,
+  Divider,
+  DividerProps,
   Table,
   TableBody,
   TableCell,
@@ -17,6 +19,7 @@ import {
   Typography,
   TypographyProps,
 } from '@mui/material';
+import TextLink from 'components/common/TextLink';
 // type
 interface MarkdownProps {
   content?: string;
@@ -32,6 +35,20 @@ const Markdown: React.FunctionComponent<MarkdownProps> = (props) => {
         children={content}
         options={{
           overrides: {
+            a: {
+              component: TextLink,
+            },
+            h1: {
+              component: Typography,
+              props: {
+                component: 'h2',
+                sx: {
+                  marginBottom: '0.75rem',
+                  marginTop: '1.5rem',
+                },
+                variant: 'h2',
+              } as TypographyProps,
+            },
             h2: {
               component: Typography,
               props: {
@@ -53,6 +70,44 @@ const Markdown: React.FunctionComponent<MarkdownProps> = (props) => {
                 },
                 variant: 'h4',
               } as TypographyProps,
+            },
+            h4: {
+              component: Typography,
+              props: {
+                component: 'h4',
+                sx: {
+                  marginBottom: '0.5rem',
+                  marginTop: '1.2rem',
+                },
+                variant: 'h5',
+              } as TypographyProps,
+            },
+            h5: {
+              component: Typography,
+              props: {
+                component: 'h5',
+                sx: {
+                  marginBottom: '0.5rem',
+                  marginTop: '1.2rem',
+                },
+                variant: 'h6',
+              } as TypographyProps,
+            },
+            h6: {
+              component: Typography,
+              props: {
+                component: 'h6',
+                sx: {
+                  fontSize: '1.1rem',
+                  marginBottom: '0.5rem',
+                  marginTop: '1.2rem',
+                },
+                variant: 'h6',
+              } as TypographyProps,
+            },
+            hr: {
+              component: Divider,
+              props: {} as DividerProps,
             },
             image: {
               component: Image,
