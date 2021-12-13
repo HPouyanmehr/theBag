@@ -60,7 +60,7 @@ const ProjectPage: NextPage<ProjectPageProps> = (props) => {
               <Markdown content={content} />
             </Grid>
             <Grid item xs>
-              {/* <ProjectDetails project={project} /> */}
+              <ProjectDetails project={parsedProject} />
             </Grid>
           </ContainerGrid>
         </ProjectContainer>
