@@ -80,9 +80,23 @@ export const getStaticProps: GetStaticProps = async (
 
   if (!project) return { props: {} };
 
-  const filename = project.postFileName + '.md';
-  const md = fs.readFileSync(path.join(`posts\\${filename}`));
-  const { value: content } = remark.processSync(md);
+  const filename = project.postFileName + '.mdx';
+
+  let content;
+  try {
+    const md = fs.readFileSync(path.join(`posts\\${filename}`));
+    if (md) {
+      const { value } = remark.processSync(md);
+      content = value;
+    }
+  } catch (error) {}
+
+  if (!content)
+    return {
+      props: {
+        project: JSON.stringify(project),
+      },
+    };
 
   return {
     props: {
