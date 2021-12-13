@@ -6,14 +6,13 @@ import path from 'path';
 import * as React from 'react';
 // gray-matter
 import { remark } from 'remark';
-// markdown-to-jsx
-import Markdown from 'markdown-to-jsx';
 // @mui
 import { Box, BoxProps, Grid, styled } from '@mui/material';
 // custom component
 import ContainerGrid from 'components/common/ContainerGrid';
 import Gallery from 'components/common/Gallery';
 import MainLayout from 'components/layout/MainLayout';
+import Markdown from 'components/common/Markdown';
 import ProjectDetails from 'components/section/ProjectDetails';
 // projects data
 import projectsData, { Project } from 'constants/projectsData';
@@ -58,7 +57,7 @@ const ProjectPage: NextPage<ProjectPageProps> = (props) => {
           <ContainerGrid>
             <Grid item xs={12} md={8}>
               <Gallery images={parsedProject.images} />
-              <Markdown children={content} />
+              <Markdown content={content} />
             </Grid>
             <Grid item xs>
               {/* <ProjectDetails project={project} /> */}
