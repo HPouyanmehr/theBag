@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { remark } from 'remark';
 
-const projectsDir = path.join(process.cwd(), 'posts\\projects');
+const projectsDir = path.join(process.cwd(), 'posts/projects');
 
 export const getProjectData = async (
   id: string
@@ -27,13 +27,24 @@ export const getProjectData = async (
 };
 
 export const getAllProjectsId = () => {
-  const fileNames = fs.readdirSync(projectsDir);
+  try {
+    const fileNames = fs.readdirSync(projectsDir);
 
-  return fileNames.map((fileName) => {
-    return {
+    return fileNames.map((fileName) => {
+      return {
+        params: {
+          id: fileName.replace(/\.mdx$/, ''),
+        },
+      };
+    });
+  } catch (error) {
+    console.log(`error - Couldn't read this dir files: ${projectsDir}`);
+  }
+  return [
+    {
       params: {
-        id: fileName.replace(/\.mdx$/, ''),
+        id: '',
       },
-    };
-  });
+    },
+  ];
 };
