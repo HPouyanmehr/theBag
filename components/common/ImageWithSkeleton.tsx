@@ -5,7 +5,7 @@ import Image, { ImageProps } from 'next/image';
 import { Skeleton, useTheme } from '@mui/material';
 
 const ImageWithSkeleton: React.FunctionComponent<ImageProps> = (props) => {
-  const { children, onLoad, ...otherProps } = props;
+  const { children, onLoad, alt = '', ...otherProps } = props;
   const [isLoaded, setIsLoaded] = React.useState(false);
   const {
     palette: { primary },
@@ -13,7 +13,7 @@ const ImageWithSkeleton: React.FunctionComponent<ImageProps> = (props) => {
 
   return (
     <>
-      <Image onLoad={() => setIsLoaded(true)} {...otherProps} />
+      <Image alt={alt} onLoad={() => setIsLoaded(true)} {...otherProps} />
       {!isLoaded && (
         <Skeleton
           variant="rectangular"
