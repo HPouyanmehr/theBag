@@ -54,6 +54,9 @@ const Markdown: React.FunctionComponent<MarkdownProps> = (props) => {
             },
             code: {
               component: InlineCode,
+              props: {
+                component: 'code',
+              } as BoxProps,
             },
             h1: {
               component: Typography,
