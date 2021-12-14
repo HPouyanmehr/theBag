@@ -24,7 +24,6 @@ import {
 // custom component
 import TextLink from 'components/common/TextLink';
 import Blockquote from 'components/common/Blockquote';
-import { HtmlAttributes } from 'csstype';
 import HighlightSyntax from 'components/common/HighlightSyntax';
 // type
 interface MarkdownProps {
