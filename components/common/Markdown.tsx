@@ -19,7 +19,9 @@ import {
   Typography,
   TypographyProps,
 } from '@mui/material';
+// custom component
 import TextLink from 'components/common/TextLink';
+import Blockquote from 'components/common/Blockquote';
 // type
 interface MarkdownProps {
   content?: string;
@@ -37,6 +39,9 @@ const Markdown: React.FunctionComponent<MarkdownProps> = (props) => {
           overrides: {
             a: {
               component: TextLink,
+            },
+            blockquote: {
+              component: Blockquote,
             },
             h1: {
               component: Typography,
