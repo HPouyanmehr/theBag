@@ -4,6 +4,8 @@ import fs from 'fs';
 import path from 'path';
 // react
 import * as React from 'react';
+// reading-time
+import readingTime from 'reading-time';
 // gray-matter
 import { remark } from 'remark';
 // @mui
@@ -38,7 +40,8 @@ const ProjectContainer = styled(Box)<BoxProps>(({ theme }) => ({
 }));
 
 const ProjectPage: NextPage<ProjectPageProps> = (props) => {
-  const { project, content = 'no content' } = props;
+  const { project, content = '' } = props;
+  const contentStats = readingTime(content);
 
   const NotFound = (
     <MainLayout pageData={{ title: 'Project Not Found' }}>
@@ -59,7 +62,10 @@ const ProjectPage: NextPage<ProjectPageProps> = (props) => {
               <Gallery images={parsedProject.images} />
             </Grid>
             <Grid item xs>
-              <ProjectDetails project={parsedProject} />
+              <ProjectDetails
+                project={parsedProject}
+                readTime={Math.ceil(contentStats.minutes)}
+              />
             </Grid>
           </ContainerGrid>
           <ContainerGrid>

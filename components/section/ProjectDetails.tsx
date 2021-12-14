@@ -9,12 +9,13 @@ import { Project } from 'constants/projectsData';
 import CustomChip from 'components/common/CustomChip';
 interface ProjectDetailsProps {
   project: Project;
+  readTime?: number;
 }
 
 const ProjectDetails: React.FunctionComponent<ProjectDetailsProps> = (
   props
 ) => {
-  const { project, ...otherProps } = props;
+  const { project, readTime = 0, ...otherProps } = props;
   const { title, category, date } = project;
 
   const shortDate = dayjs(date).toDate().toDateString();
@@ -25,7 +26,7 @@ const ProjectDetails: React.FunctionComponent<ProjectDetailsProps> = (
         {title}
       </Typography>
       <Typography component="p" variant="body1" sx={{ marginBottom: '0.5rem' }}>
-        Read Time: 14 min
+        Read Time: {readTime} min
       </Typography>
       <Typography component="p" variant="body1" sx={{ marginBottom: '0.5rem' }}>
         Published at {shortDate}
