@@ -13,7 +13,7 @@ import ProjectDetails from 'components/section/ProjectDetails';
 // projects data
 import projectsData, { Project } from 'constants/projectsData';
 // custom lib
-import { getProjectData } from 'lib/projects';
+import { getAllProjectsId, getProjectData } from 'lib/projects';
 // type
 import type {
   GetStaticPaths,
@@ -104,8 +104,10 @@ export const getStaticProps: GetStaticProps = async (
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = getAllProjectsId();
+
   return {
-    paths: [],
-    fallback: 'blocking',
+    paths,
+    fallback: false,
   };
 };

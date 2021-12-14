@@ -25,3 +25,15 @@ export const getProjectData = async (
     };
   }
 };
+
+export const getAllProjectsId = () => {
+  const fileNames = fs.readdirSync(projectsDir);
+
+  return fileNames.map((fileName) => {
+    return {
+      params: {
+        id: fileName.replace(/\.mdx$/, ''),
+      },
+    };
+  });
+};
