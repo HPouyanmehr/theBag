@@ -6,7 +6,7 @@ import { styled } from '@mui/material';
 import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import vsDark from 'prism-react-renderer/themes/vsDark';
 // type
-interface HighlightSyntaxtProps {
+interface HighlightSyntaxProps {
   code?: string;
   language?: Language;
 }
@@ -16,7 +16,7 @@ const Pre = styled('pre')<React.HTMLAttributes<HTMLPreElement>>({
   borderRadius: '4px',
 });
 
-const HighlightSyntaxt: React.FunctionComponent<HighlightSyntaxtProps> = (
+const HighlightSyntax: React.FunctionComponent<HighlightSyntaxProps> = (
   props
 ) => {
   const {
@@ -41,4 +41,4 @@ const HighlightSyntaxt: React.FunctionComponent<HighlightSyntaxtProps> = (
   );
 };
 
-export default HighlightSyntaxt;
+export default HighlightSyntax;
