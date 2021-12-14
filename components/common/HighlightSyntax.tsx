@@ -30,9 +30,9 @@ const HighlightSyntax: React.FunctionComponent<HighlightSyntaxProps> = (
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <Pre className={className} style={style}>
           {tokens.map((line, i) => (
-            <div {...getLineProps({ line, key: i })}>
+            <div key={i} {...getLineProps({ line, key: i })}>
               {line.map((token, key) => (
-                <span {...getTokenProps({ token, key })} />
+                <span key={key} {...getTokenProps({ token, key })} />
               ))}
             </div>
           ))}
