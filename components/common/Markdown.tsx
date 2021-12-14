@@ -8,6 +8,7 @@ import MTJMarkdown from 'markdown-to-jsx';
 // @mui
 import {
   Box,
+  BoxProps,
   Divider,
   DividerProps,
   Table,
@@ -18,6 +19,7 @@ import {
   TableRow,
   Typography,
   TypographyProps,
+  styled,
 } from '@mui/material';
 // custom component
 import TextLink from 'components/common/TextLink';
@@ -27,6 +29,13 @@ interface MarkdownProps {
   content?: string;
   sx?: React.CSSProperties;
 }
+
+const InlineCode = styled(Box)<BoxProps>(({ theme }) => ({
+  display: 'inline-block',
+  padding: '4px 8px',
+  backgroundColor: 'rgba(255, 255, 255, 0.2)',
+  borderRadius: theme.shape.borderRadius,
+}));
 
 const Markdown: React.FunctionComponent<MarkdownProps> = (props) => {
   const { content = '**No Content**', sx } = props;
@@ -42,6 +51,9 @@ const Markdown: React.FunctionComponent<MarkdownProps> = (props) => {
             },
             blockquote: {
               component: Blockquote,
+            },
+            code: {
+              component: InlineCode,
             },
             h1: {
               component: Typography,
