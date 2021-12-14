@@ -24,6 +24,8 @@ import {
 // custom component
 import TextLink from 'components/common/TextLink';
 import Blockquote from 'components/common/Blockquote';
+import { HtmlAttributes } from 'csstype';
+import HighlightSyntax from 'components/common/HighlightSyntax';
 // type
 interface MarkdownProps {
   content?: string;
@@ -36,6 +38,17 @@ const InlineCode = styled(Box)<BoxProps>(({ theme }) => ({
   backgroundColor: 'rgba(255, 255, 255, 0.2)',
   borderRadius: theme.shape.borderRadius,
 }));
+
+const PreBlock = ({ children }: { children: any }) => {
+  if (children && children.props && children.props.component === 'code') {
+    const lang = children.props.className
+      ? children.props.className.replace('lang-', '')
+      : 'tsx';
+
+    return <HighlightSyntax code={children.props.children} language={lang} />;
+  }
+  return <Box component="pre">{children}</Box>;
+};
 
 const Markdown: React.FunctionComponent<MarkdownProps> = (props) => {
   const { content = '**No Content**', sx } = props;
@@ -156,6 +169,9 @@ const Markdown: React.FunctionComponent<MarkdownProps> = (props) => {
                 },
                 variant: 'body1',
               } as TypographyProps,
+            },
+            pre: {
+              component: PreBlock,
             },
             table: {
               component: Table,
