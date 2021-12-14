@@ -14,6 +14,7 @@ interface HighlightSyntaxProps {
 const Pre = styled('pre')<React.HTMLAttributes<HTMLPreElement>>({
   padding: '1rem',
   borderRadius: '4px',
+  overflowX: 'auto',
 });
 
 const HighlightSyntax: React.FunctionComponent<HighlightSyntaxProps> = (
