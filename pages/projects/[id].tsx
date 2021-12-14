@@ -1,13 +1,7 @@
-// fs
-import fs from 'fs';
-// path
-import path from 'path';
 // react
 import * as React from 'react';
 // reading-time
 import readingTime from 'reading-time';
-// gray-matter
-import { remark } from 'remark';
 // @mui
 import { Box, BoxProps, Grid, styled } from '@mui/material';
 // custom component
@@ -18,6 +12,8 @@ import Markdown from 'components/common/Markdown';
 import ProjectDetails from 'components/section/ProjectDetails';
 // projects data
 import projectsData, { Project } from 'constants/projectsData';
+// custom lib
+import { getProjectData } from 'lib/projects';
 // type
 import type {
   GetStaticPaths,
@@ -89,16 +85,8 @@ export const getStaticProps: GetStaticProps = async (
 
   if (!project) return { props: {} };
 
-  const filename = project.postFileName + '.mdx';
-
-  let content;
-  try {
-    const md = fs.readFileSync(path.join(process.cwd(), `posts\\${filename}`));
-    if (md) {
-      const { value } = remark.processSync(md);
-      content = value;
-    }
-  } catch (error) {}
+  const filename = project.postFileName;
+  const { content } = await getProjectData(filename);
 
   if (!content)
     return {
