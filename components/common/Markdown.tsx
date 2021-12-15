@@ -46,7 +46,11 @@ const PreBlock = ({ children }: { children: any }) => {
 
     return <HighlightSyntax code={children.props.children} language={lang} />;
   }
-  return <Box component="pre">{children}</Box>;
+  return (
+    <Box component="pre" sx={{ whiteSpace: 'pre-wrap' }}>
+      {children}
+    </Box>
+  );
 };
 
 const Markdown: React.FunctionComponent<MarkdownProps> = (props) => {
