@@ -5,10 +5,12 @@ import { Formik } from 'formik';
 // @mui
 import {
   Card,
+  CardProps,
   CardActions,
   CardContent,
   CardHeader,
   Typography,
+  styled,
 } from '@mui/material';
 // custom component
 import CustomTextField from 'components/common/CustomTextField';
@@ -18,13 +20,17 @@ import { ContactFormSchema } from 'models/contactFormModel';
 // type
 interface ContactFormProps {}
 
+const CustomCard = styled(Card)<CardProps>(({ theme }) => ({
+  maxWidth: '32rem',
+}));
+
 const ContactForm: React.FunctionComponent<ContactFormProps> = (props) => {
   const toCapitalize = (string: string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
   return (
-    <Card>
+    <CustomCard>
       <CardHeader
         title={
           <Typography color="primary" component="h2" variant="h5">
@@ -151,7 +157,7 @@ const ContactForm: React.FunctionComponent<ContactFormProps> = (props) => {
           </>
         )}
       </Formik>
-    </Card>
+    </CustomCard>
   );
 };
 
