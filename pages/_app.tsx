@@ -3,7 +3,9 @@ import * as React from 'react';
 // @emotion
 import { CacheProvider, EmotionCache } from '@emotion/react';
 // @mui
-import { ThemeProvider, CssBaseline } from '@mui/material';
+import { ThemeProvider, CssBaseline, styled } from '@mui/material';
+// nextjs-progressbar
+import NextNprogress from 'nextjs-progressbar';
 // context
 import ComponentsContext from 'context/componentsContext';
 import ConstantsContext from 'context/constantsContext';
@@ -42,6 +44,10 @@ const MyApp = (props: MyAppProps) => {
         <CssBaseline />
         <ComponentsContext.Provider value={componentsContext}>
           <ConstantsContext.Provider value={constantsContext}>
+            <NextNprogress
+              color={lightTheme.palette.info.main}
+              options={{ showSpinner: false }}
+            />
             <Component {...pageProps} />
           </ConstantsContext.Provider>
         </ComponentsContext.Provider>
