@@ -9,14 +9,14 @@ import {
   Box,
   BoxProps,
   Container,
-  Divider,
   Grow,
   List,
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  styled,
   Toolbar,
+  ToolbarProps,
+  styled,
   useTheme,
 } from '@mui/material';
 // custom component
@@ -49,6 +49,12 @@ const LinksBox = styled(Box)<BoxProps>(({ theme }) => ({
   },
 }));
 
+const CustomToolbar = styled(Toolbar)<ToolbarProps>(({ theme }) => ({
+  [theme.breakpoints.down('md')]: {
+    padding: 0,
+  },
+}));
+
 const CustomAppBar: React.FunctionComponent<CustomAppBarProps> = (props) => {
   const [dropdownState, setDropdownState] = React.useState(false);
   const { containerMaxWidth = 'lg' } = React.useContext(ComponentsContext);
@@ -77,7 +83,7 @@ const CustomAppBar: React.FunctionComponent<CustomAppBarProps> = (props) => {
     <>
       <CustomAppBarRoot position="absolute" ref={appBarRef}>
         <Container maxWidth={containerMaxWidth}>
-          <Toolbar>
+          <CustomToolbar>
             <NameLogo
               bgColor="white"
               color="#383838"
@@ -103,7 +109,7 @@ const CustomAppBar: React.FunctionComponent<CustomAppBarProps> = (props) => {
                 sx={{ display: { sm: 'none' } }}
               />
             </LinkContainer>
-          </Toolbar>
+          </CustomToolbar>
         </Container>
         <Box
           sx={{
