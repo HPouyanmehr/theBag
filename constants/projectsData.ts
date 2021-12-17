@@ -2,7 +2,7 @@
 import dayjs, { Dayjs } from 'dayjs';
 // type
 import { ImageProps } from 'types/imageType';
-export type ProjectCategory = 'photography' | 'design';
+import { ProjectCategory } from 'types/categoryType';
 
 export interface ProjectDetails {
   category: ProjectCategory[];
