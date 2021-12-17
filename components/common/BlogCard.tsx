@@ -96,24 +96,7 @@ const BlogCard: React.FunctionComponent<BlogCardProps> = (props) => {
           {readTime} min read
         </Typography>
         <Box>
-          <ButtonLink
-            href={href}
-            sx={{
-              span: {
-                marginLeft: '0.2rem',
-                fontSize: '1.25rem',
-                transition: 'all 0.25s ease-in-out',
-              },
-              ':hover': {
-                span: {
-                  transition: 'all 0.25s ease-in-out',
-                  marginLeft: '0.5rem',
-                },
-              },
-            }}
-          >
-            read more <Box component="span">&#8594;</Box>
-          </ButtonLink>
+          <ButtonLink href={href}>read more</ButtonLink>
         </Box>
       </CustomCardActions>
     </Card>
