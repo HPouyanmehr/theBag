@@ -10,9 +10,9 @@ import ImageWithSkeleton from 'components/common/ImageWithSkeleton';
 // style
 import classes from 'styles/components/Gallery.module.scss';
 // type
-import { ProjectImage } from 'constants/projectsData';
+import { ImageProps } from 'types/imageType';
 interface GalleryProps {
-  images: ProjectImage[];
+  images: ImageProps[];
 }
 
 const Gallery: React.FunctionComponent<GalleryProps> = (props) => {

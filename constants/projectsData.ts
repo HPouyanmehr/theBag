@@ -1,20 +1,14 @@
 // dayjs
 import dayjs, { Dayjs } from 'dayjs';
 // type
+import { ImageProps } from 'types/imageType';
 export type ProjectCategory = 'photography' | 'design';
-export interface ProjectImage {
-  alt: string;
-  height: number;
-  likes: number;
-  src: string;
-  width: number;
-}
 
 export interface ProjectDetails {
   category: ProjectCategory[];
   date: Dayjs;
   id: string;
-  images: ProjectImage[];
+  images: ImageProps[];
   postFileName: string;
   title: string;
 }
