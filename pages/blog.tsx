@@ -17,17 +17,37 @@ const Blog: NextPage = (props) => {
 
   return (
     <MainLayout pageData={pages && pages.projects}>
+      <Typography
+        component="h1"
+        marginTop="20%"
+        textAlign="center"
+        variant="h2"
+      >
+        Blog
+      </Typography>
+      <Typography
+        color="text.secondary"
+        component="p"
+        marginTop="1rem"
+        textAlign="center"
+        variant="body1"
+      >
+        Be up to date in photography and design
+      </Typography>
       {blogPosts ? (
-        <ContainerGrid
-          sx={{ padding: { xs: '1rem', sm: '2rem' }, marginTop: '5rem' }}
-        >
+        <ContainerGrid sx={{ padding: { xs: '1rem', sm: '2rem' } }}>
           {blogPosts.map((post, index) => (
-            <Grid item key={post.title + index} xs={12} md={4} lg={3}>
+            <Grid item key={post.title + index} xs={12} sm={6} md={4} lg={3}>
               <BlogCard
                 href={`/blog/${post.id}`}
                 readTime={5}
                 imageAlt={post.image.alt}
                 imageSrc={post.image.src}
+                sx={{
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
+                  maxWidth: '21rem',
+                }}
                 title={post.title}
               />
             </Grid>
