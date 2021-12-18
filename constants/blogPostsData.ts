@@ -1,7 +1,7 @@
 // dayjs
 import dayjs from 'dayjs';
 // lib
-import { createPost } from 'lib/blogPost';
+import { createPost } from 'utility/createBlogPost';
 // type
 import { BlogPost } from 'types/blogPostType';
 
