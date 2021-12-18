@@ -1,26 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import { remark } from 'remark';
-// type
-import { BlogPost, BlogPostDetails } from 'types/blogPostType';
 
 const blogPostsDir = path.join(process.cwd(), 'posts/blog');
-
-export const createPost = (props: BlogPostDetails): BlogPost => {
-  const { category, date, id, image, filename, title } = props;
-
-  return {
-    category,
-    date,
-    id,
-    image,
-    filename,
-    title,
-    get likes() {
-      return this.image.likes;
-    },
-  };
-};
 
 export const getBlogPostById = async (
   id: string
