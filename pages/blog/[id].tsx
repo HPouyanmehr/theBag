@@ -41,8 +41,7 @@ const BlogPost: NextPage<BlogPostProps> = (props) => {
   if (!blogPost) return <ProjectNotFound />;
 
   const parsedBlogPost: BlogPostDataProps = JSON.parse(blogPost);
-  const { minutes } = readingTime(content);
-  const readTime = Math.ceil(minutes);
+  const { text: readTime } = readingTime(content);
   const date = dayjs(parsedBlogPost.date);
 
   return (
@@ -58,7 +57,7 @@ const BlogPost: NextPage<BlogPostProps> = (props) => {
           textAlign="center"
           variant="body1"
         >
-          {readTime} Read time - Published at {date.toDate().toDateString()}
+          {readTime} - Published at {date.toDate().toDateString()}
         </Typography>
         <ContainerGrid>
           <Grid item xs={12} md={8} sx={{ margin: '3rem auto 1rem' }}>
