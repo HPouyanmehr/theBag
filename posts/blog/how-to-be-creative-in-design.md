@@ -1,4 +1,4 @@
-![person holding light bulb](/posts/person holding light bulb.jpg)
+![person holding light bulb](/posts/person%20holding%20light%20bulb.jpg)
 
 # Heading One
 

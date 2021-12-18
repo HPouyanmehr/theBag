@@ -1,4 +1,4 @@
-![person holding ballpoint pen writing on white paper](/posts/person holding ballpoint pen writing on white paper.jpg)
+![person holding ballpoint pen writing on white paper](/posts/person%20holding%20ballpoint%20pen%20writing%20on%20white%20paper.jpg)
 
 # Heading One
 

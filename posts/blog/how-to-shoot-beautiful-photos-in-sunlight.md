@@ -1,4 +1,4 @@
-![woman doing yoga meditation on brown parquet flooring](/posts/woman doing yoga meditation on brown parquet flooring.jpg)
+![woman doing yoga meditation on brown parquet flooring](/posts/woman%20doing%20yoga%20meditation%20on%20brown%20parquet%20flooring.jpg)
 
 # Heading One
 
