@@ -1,7 +1,7 @@
 // react
 import * as React from 'react';
 // @mui
-import { Grid, Typography } from '@mui/material';
+import { Grid, Grow, Typography } from '@mui/material';
 // custom component
 import BlogCard from 'components/common/BlogCard';
 import ContainerGrid from 'components/common/ContainerGrid';
@@ -37,20 +37,26 @@ const Blog: NextPage = (props) => {
       {blogPosts ? (
         <ContainerGrid sx={{ padding: { xs: '1rem', sm: '2rem' } }}>
           {blogPosts.map((post, index) => (
-            <Grid item key={post.title + index} xs={12} sm={6} md={4} lg={3}>
-              <BlogCard
-                href={`/blog/${post.id}`}
-                readTime={5}
-                imageAlt={post.image.alt}
-                imageSrc={post.image.src}
-                sx={{
-                  marginLeft: 'auto',
-                  marginRight: 'auto',
-                  maxWidth: '21rem',
-                }}
-                title={post.title}
-              />
-            </Grid>
+            <Grow
+              in={true}
+              key={post.title + index}
+              timeout={(index + 1) * 500}
+            >
+              <Grid item xs={12} sm={6} md={4} lg={3}>
+                <BlogCard
+                  href={`/blog/${post.id}`}
+                  readTime={5}
+                  imageAlt={post.image.alt}
+                  imageSrc={post.image.src}
+                  sx={{
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                    maxWidth: '21rem',
+                  }}
+                  title={post.title}
+                />
+              </Grid>
+            </Grow>
           ))}
         </ContainerGrid>
       ) : (
