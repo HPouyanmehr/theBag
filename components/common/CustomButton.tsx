@@ -5,7 +5,7 @@ import { Button, ButtonProps, styled } from '@mui/material';
 // type
 interface CustomButtonProps extends ButtonProps {}
 
-const CustomButtonRoot = styled(Button)<ButtonProps>(({ theme }) => ({
+const CustomButtonRoot = styled(Button)<ButtonProps>(({ theme, variant }) => ({
   textTransform: 'capitalize',
   boxShadow: 'none',
   '&: hover': {
@@ -16,6 +16,11 @@ const CustomButtonRoot = styled(Button)<ButtonProps>(({ theme }) => ({
   '&: active': {
     opacity: 0.5,
     transition: '0.3s ease-in-out',
+  },
+  ':focus-visible': {
+    boxShadow: 'none',
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    color: 'currentcolor',
   },
 }));
 
