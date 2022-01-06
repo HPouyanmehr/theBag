@@ -36,6 +36,9 @@ interface ProjectCardProps extends CardProps {
 }
 
 const CustomCard = styled(Card)<CardProps>(({ theme }) => ({
+  img: {
+    transition: 'all 0.5s ease-in-out',
+  },
   '&: hover': {
     img: {
       transition: 'all 0.5s ease-in-out',
