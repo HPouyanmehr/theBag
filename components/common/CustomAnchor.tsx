@@ -26,6 +26,12 @@ const Root = styled('a')({
   '&:hover:before': {
     transform: 'scaleX(1)',
   },
+  ':focus-visible': {
+    outline: 'none',
+    ':before': {
+      transform: 'scaleX(1)',
+    },
+  },
 });
 
 const CustomAnchor: React.FunctionComponent<CustomAnchorProps> = (props) => {
