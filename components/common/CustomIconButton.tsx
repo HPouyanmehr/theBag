@@ -7,9 +7,12 @@ interface CustomIconButtonProps extends IconButtonProps {}
 
 const CustomIconButtonRoot = styled(IconButton)<IconButtonProps>(
   ({ theme }) => ({
-    '&: active': {
+    ': active': {
       opacity: 0.5,
       transition: '0.3s ease-in-out',
+    },
+    ':hover': {
+      backgroundColor: 'rgba(127, 127, 127, 0.1)',
     },
   })
 );
